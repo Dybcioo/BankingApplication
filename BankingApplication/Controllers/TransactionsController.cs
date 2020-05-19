@@ -19,7 +19,6 @@ namespace BankingApplication.Controllers
         public ActionResult Index()
         {
              var transactions = db.Transactions.Include(t => t.Account).Include(t => t.OperationKind);
-            //Ala ma kota
             return View(transactions.ToList());
         }
 
