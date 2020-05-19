@@ -50,6 +50,69 @@
             @Html.DisplayFor(model => model.Active)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Address.Country)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address.Province)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address.City)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address.Street)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address.numberHouse)</th>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Address.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Address.Province)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Address.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Address.Street)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Address.numberHouse)
+                    </td>
+                </tr>
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Accounts)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Accounts[0].AccountNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.Accounts[0].CreationDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.Accounts[0].Balance)</th>
+
+                </tr>
+                @foreach (var item in Model.Accounts)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.AccountNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.CreationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Balance)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+
     </dl>
 </div>
 <p>

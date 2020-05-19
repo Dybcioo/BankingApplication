@@ -18,7 +18,7 @@ namespace BankingApplication.Controllers
         // GET: Transactions
         public ActionResult Index()
         {
-             var transactions = db.Transactions.Include(t => t.Account).Include(t => t.OperationKind);
+            var transactions = db.Transactions.Include(t => t.Account).Include(t => t.OperationKind);
             return View(transactions.ToList());
         }
 
@@ -50,7 +50,7 @@ namespace BankingApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Title,Amount,Date,ToAccountNumber,OperationKindId,AccountId")] Transaction transaction)
+        public ActionResult Create([Bind(Include = "Id,AccountId,OperationKindId,Title,Amount,Date,ToAccountNumber,Description")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace BankingApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,Title,Amount,Date,ToAccountNumber,OperationKindId,AccountId")] Transaction transaction)
+        public ActionResult Edit([Bind(Include = "Id,AccountId,OperationKindId,Title,Amount,Date,ToAccountNumber,Description")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {

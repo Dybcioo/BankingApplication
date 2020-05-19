@@ -1,22 +1,49 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 
 namespace BankingApplication.Models
 {
+    
     public class Transaction
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public string Title { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:F2}")]
-        public Decimal Amount { get; set; }
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:MM}", ApplyFormatInEditMode = true)]
-        public DateTime Date { get; set; }
-        public string ToAccountNumber { get; set; }
-        public int OperationKindId { get; set; }
+
+        [Display(Name = "Wybierz konto")]
         public int AccountId { get; set; }
 
+        [Display(Name = "Wybierz typ operacji")]
+        public int OperationKindId { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 5)]
+        [Display(Name = "Tytuł")]
+        public string Title { get; set; }
+
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:F2}")]
+        [Display(Name = "Kwota transakcji")]
+        public Decimal Amount { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:MM}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data transakcji")]
+        public DateTime Date { get; set; }
+
+        [Required]
+        [Display(Name = "Numer konta")]
+        [RegularExpression(@"^[0-9]{26}$", ErrorMessage = "Numer konta musi zwierać wyłącznie cyfry i mieć długość 26 cyfr")]
+        public string ToAccountNumber { get; set; }
+        
+        [StringLength(200, MinimumLength = 5)]
+        [Display(Name = "Opis")]
+        public string Description { get; set; }
+
+
+        [Display(Name = "Rodzaj operacji")]
         public virtual OperationKind OperationKind { get; set; }
+
+        [Display(Name = "Konto")]
         public virtual Account Account { get; set; }
     }
 }

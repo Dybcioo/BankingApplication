@@ -9,14 +9,33 @@ namespace BankingApplication.Models
     public class Profile
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Born { get; set; }
-        public Boolean Active { get; set; }
 
+        [Display(Name = "Nazwa użytkownika")]
+        public string Username { get; set; }
+
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
+        [Display(Name = "Imię")]
+        public string Name { get; set; }
+
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
+        [Display(Name = "Nazwisko")]
+        public string Surname { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data urodzenia")]
+        public DateTime Born { get; set; }
+
+        [Display(Name = "Aktywny")]
+        public bool Active { get; set; }
+
+
+        [Display(Name = "Adres")]
         public virtual Address Address { get; set; }
+
+        [Display(Name = "Konta")]
         public virtual List<Account> Accounts { get; set; }
     }
 }
