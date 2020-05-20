@@ -36,28 +36,7 @@ namespace BankingApplication.Controllers
             return View(profile);
         }
 
-        // GET: Profiles/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Profiles/Create
-        // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
-        // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Username,Name,Surname,Born,Active")] Profile profile)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Profiles.Add(profile);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(profile);
-        }
+        
 
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)
@@ -110,6 +89,7 @@ namespace BankingApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //  TO DO
             Profile profile = db.Profiles.Find(id);
             db.Profiles.Remove(profile);
             db.SaveChanges();

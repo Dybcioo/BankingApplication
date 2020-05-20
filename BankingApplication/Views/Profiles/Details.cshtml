@@ -54,39 +54,47 @@
             @Html.DisplayNameFor(model => model.Address)
         </dt>
 
-        <dd>
-            <table class="table">
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Address.Country)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address.Province)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address.City)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address.Street)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address.numberHouse)</th>
-                    <th>Edycja</th>
+        @if (Model.Address != null)
+        {
+            <dd>
+                <table class="table">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Address.Country)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address.Province)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address.City)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address.Street)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address.numberHouse)</th>
+                        <th>Edycja</th>
 
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(model => model.Address.Country)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Address.Province)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Address.City)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Address.Street)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Address.numberHouse)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", "Addresses", new { id = Model.Address.Id }, "")
-                    </td>
-                </tr>
-            </table>
-        </dd>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Address.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Address.Province)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Address.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Address.Street)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Address.numberHouse)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Addresses", new { id = Model.Address.Id }, "")
+                        </td>
+                    </tr>
+                </table>
+            </dd>
+        }
+        @if (Model.Address == null)
+        {
+            @Html.ActionLink("Edit", "Create", "Addresses")
+        }
+
         <dt>
             @Html.DisplayNameFor(model => model.Accounts)
         </dt>

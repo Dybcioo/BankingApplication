@@ -41,7 +41,7 @@ namespace BankingApplication.Controllers
         public ActionResult Create()
         {
             ViewBag.ProfileId = new SelectList(db.Profiles, "Id", "Username");
-            return View();
+            return View(new Address());
         }
 
         // POST: Addresses/Create
@@ -49,10 +49,12 @@ namespace BankingApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Country,Province,City,Street,numberHouse,ProfileId")] Address address)
+        public ActionResult Create([Bind(Include = "Id,Country,Province,City,Street,numberHouse,Profile")] Address address)
         {
             if (ModelState.IsValid)
             {
+                Profile profile = db.Profiles.Single(p => p.Username.Equals(User.Identity.Name));
+                address.Profile = profile;
                 db.Addresses.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,7 +91,7 @@ namespace BankingApplication.Controllers
             {
                 db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = address.Id });
             }
             ViewBag.ProfileId = new SelectList(db.Profiles, "Id", "Username", address.Profile.Id);
             return View(address);

@@ -158,7 +158,7 @@ namespace BankingApplication.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    Profile profile = new Profile { Username = model.Email };
+                    Profile profile = new Profile { Username = model.Email, Name = model.Name, Surname = model.Surname, Born = model.Born, Active = true };
                     AccountContext db = new AccountContext();
                     db.Profiles.Add(profile);
                     db.SaveChanges();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BankingApplication.Models
@@ -79,6 +80,21 @@ namespace BankingApplication.Models
         [Display(Name = "Potwierdź hasło")]
         [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie są niezgodne.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
+        [Display(Name = "Imię")]
+        public string Name { get; set; }
+
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
+        [Display(Name = "Nazwisko")]
+        public string Surname { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data urodzenia")]
+        public DateTime Born { get; set; }
     }
 
     public class ResetPasswordViewModel
