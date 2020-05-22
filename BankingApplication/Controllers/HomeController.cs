@@ -13,14 +13,7 @@ namespace BankingApplication.Controllers
         private AccountContext db = new AccountContext();
         public ActionResult Index()
         {
-            IQueryable<TransactionIO> data = from transaction in db.Transactions
-                                             group transaction by transaction.Direction into tranGroup
-                                             select new TransactionIO()
-                                             {
-                                                 Direction = tranGroup.Key,
-                                                 TransactionCount = tranGroup.Count()
-                                             };
-            return View(data.ToList());
+            return View();
         }
 
         protected override void Dispose(bool disposing)
@@ -31,9 +24,14 @@ namespace BankingApplication.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            IQueryable<TransactionIO> data = from transaction in db.Transactions
+                                             group transaction by transaction.Direction into tranGroup
+                                             select new TransactionIO()
+                                             {
+                                                 Direction = tranGroup.Key,
+                                                 TransactionCount = tranGroup.Count()
+                                             };
+            return View(data.ToList());
         }
 
         public ActionResult Contact()

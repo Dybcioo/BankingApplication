@@ -9,20 +9,29 @@ using System.Web;
 
 namespace BankingApplication.DAL
 {
-    public class AccountInitializer : DropCreateDatabaseIfModelChanges<AccountContext>
+    public class AccountInitializer : DropCreateDatabaseIfModelChanges
+        <AccountContext>
     {
         protected override void Seed(AccountContext context)
         {
             var user = new ApplicationUser { UserName = "maniek@gmail.com" };
             var user2 = new ApplicationUser { UserName = "jaa@gmail.com" };
             string pass = "Ala.ma.2.koty";
-            string pass2 = "Test1212";
+            string pass2 = "Test1212.";
 
             var userManager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var roleManager = new RoleManager<IdentityRole>(
+                new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+            roleManager.Create(new IdentityRole("Admin"));
+            roleManager.Create(new IdentityRole("User"));
 
             userManager.Create(user, pass);
             userManager.Create(user2, pass2);
+
+            userManager.AddToRole(user2.Id, "Admin");
+            userManager.AddToRole(user.Id, "User");
 
            
 

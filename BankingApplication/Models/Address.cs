@@ -27,7 +27,7 @@ namespace BankingApplication.Models
         [Display(Name = "Numer domu/mieszkania")]
         public string numberHouse { get; set; }
 
-        
+
 
         [Display(Name = "Profil")]
         public virtual Profile Profile { get; set; }

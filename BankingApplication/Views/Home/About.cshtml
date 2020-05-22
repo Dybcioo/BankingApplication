@@ -1,7 +1,37 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model IEnumerable<BankingApplication.Models.TransactionIO>
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewBag.Title = "Statystyka transakcji przychodzących i wychodzących";
+}
+
+<h2>Statystyka transakcji przychodzących i wychodzących</h2>
+
+<table>
+    <tr>
+        <th>
+            Rodzaj transakcji
+        </th>
+        <th>
+            Liczba transakcji
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.Direction.ToString() == "Inbound")
+                {
+                    <text>Przychodząca</text>
+                }
+                @if (item.Direction.ToString() == "Outbound")
+                {
+                    <text>Wychodząca</text>
+                }
+            </td>
+            <td>
+                @item.TransactionCount
+            </td>
+        </tr>
+    }
+</table>
