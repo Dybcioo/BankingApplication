@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BankingApplication.DAL;
 using BankingApplication.Models;
+using PagedList;
 
 namespace BankingApplication.Controllers
 {
@@ -16,10 +17,58 @@ namespace BankingApplication.Controllers
         private AccountContext db = new AccountContext();
 
         // GET: Transactions
-        public ActionResult Index()
+        public ActionResult Index(String sort, string currentFilter, String search, int? page)
         {
+            ViewBag.CurrentSort = sort;
+            ViewBag.AccountSortParm = String.IsNullOrEmpty(sort) ? "account_desc" : "";
+            ViewBag.KindSortParm = sort == "kind" ? "kind_desc" : "kind";
+            ViewBag.AmountSortParm = sort == "amount" ? "amount_desc" : "amount";
+
+            if (search != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
             var transactions = db.Transactions.Include(t => t.Account).Include(t => t.OperationKind);
-            return View(transactions.ToList());
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                transactions = transactions.Where(s => s.Title.Contains(search));
+            }
+
+
+
+            switch (sort)
+            {
+                case "account_desc":
+                    transactions = transactions.OrderByDescending(t => t.Account.AccountNumber);
+                    break;
+                case "kind":
+                    transactions = transactions.OrderBy(t => t.OperationKind.Kind);
+                    break;
+                case "kind_desc":
+                    transactions = transactions.OrderByDescending(t => t.OperationKind.Kind);
+                    break;
+                case "amount_desc":
+                    transactions = transactions.OrderByDescending(t => t.Amount);
+                    break;
+                case "amount":
+                    transactions = transactions.OrderBy(t => t.Amount);
+                    break;
+                default:
+                    transactions = transactions.OrderBy(t => t.Account.AccountNumber);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(transactions.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Transactions/Details/5

@@ -76,7 +76,13 @@ namespace BankingApplication.DAL
 
             var transactions = new List<Transaction>
             {
-                new Transaction { ToAccountNumber = accounts[1].AccountNumber, OperationKind = operationKinds[0], Amount = 200.23M, Title = "Opłata za korki z infy", Date = DateTime.Now, Account = accounts[0] }
+                new Transaction { ToAccountNumber = accounts[1].AccountNumber, OperationKind = operationKinds[0], Amount = 200.23M, Title = "Opłata za korki z infy", Date = DateTime.Now, Account = accounts[0], Direction = direction.Outbound },
+                new Transaction { ToAccountNumber = accounts[0].AccountNumber, OperationKind = operationKinds[0], Amount = 200.23M, Title = "Opłata za korki z infy", Date = DateTime.Now, Account = accounts[1], Direction = direction.Inbound },
+                new Transaction { ToAccountNumber = "00101000110000000000000000", OperationKind = operationKinds[0], Amount = 2004.11M, Title = "Przewóz pianina", Date = new DateTime(2012,11,23, 1,12,0), Account = accounts[1], Direction = direction.Outbound },
+                new Transaction { ToAccountNumber = accounts[0].AccountNumber, OperationKind = operationKinds[1], Amount = 13.50M, Title = "Wpłata na własny rachunek", Date = new DateTime(2016,11,23, 11,12,0), Account = accounts[1], Direction = direction.Inbound },
+                new Transaction { ToAccountNumber = accounts[0].AccountNumber, OperationKind = operationKinds[2], Amount = 200.00M, Title = "Wypłata z rachunku", Date = new DateTime(2018,1,21, 15,17,0), Account = accounts[1], Direction = direction.Outbound },
+                new Transaction { ToAccountNumber = accounts[0].AccountNumber, OperationKind = operationKinds[2], Amount = 100.00M, Title = "Wypłata z rachunku", Date = new DateTime(2018,1,21, 15,20,0), Account = accounts[1], Direction = direction.Outbound },
+                new Transaction { ToAccountNumber = "00101000230000000000000000", OperationKind = operationKinds[3], Amount = 500.00M, Title = "Kredyt trzeba spłacić :(", Date = new DateTime(2018,1,21, 15,17,0), Account = accounts[1], Direction = direction.Outbound }
             };
             transactions.ForEach(t => context.Transactions.Add(t));
             context.SaveChanges();

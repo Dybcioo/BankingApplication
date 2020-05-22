@@ -19,7 +19,7 @@ namespace BankingApplication.Models
         public DateTime CreationDate { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:F2}")]
-        [Display(Name = "Data utworzenia konta")]
+        [Display(Name = "Dostępne środki")]
         public decimal Balance { get; set; }
 
         [Display(Name = "Profil")]

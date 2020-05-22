@@ -18,8 +18,7 @@ namespace BankingApplication.Controllers
         // GET: Accounts
         public ActionResult Index()
         {
-            Profile profile = db.Profiles.Single(p => p.Username.Equals(User.Identity.Name));
-            return View(profile.Accounts.ToList());
+            return View(db.Accounts.ToList());
         }
 
         // GET: Accounts/Details/5

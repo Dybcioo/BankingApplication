@@ -10,9 +10,23 @@ namespace BankingApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private AccountContext db = new AccountContext();
         public ActionResult Index()
         {
-            return View();
+            IQueryable<TransactionIO> data = from transaction in db.Transactions
+                                             group transaction by transaction.Direction into tranGroup
+                                             select new TransactionIO()
+                                             {
+                                                 Direction = tranGroup.Key,
+                                                 TransactionCount = tranGroup.Count()
+                                             };
+            return View(data.ToList());
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
 
         public ActionResult About()

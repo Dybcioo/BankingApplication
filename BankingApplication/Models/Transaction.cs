@@ -39,11 +39,19 @@ namespace BankingApplication.Models
         [Display(Name = "Opis")]
         public string Description { get; set; }
 
+        public direction Direction { get; set; }
+
 
         [Display(Name = "Rodzaj operacji")]
         public virtual OperationKind OperationKind { get; set; }
 
         [Display(Name = "Konto")]
         public virtual Account Account { get; set; }
+    }
+
+    public enum direction 
+    {
+        Outbound,
+        Inbound
     }
 }
