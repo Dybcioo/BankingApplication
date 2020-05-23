@@ -356,6 +356,12 @@
     <TypeScriptCompile Include="Angular\e2e\src\app.po.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.module.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Account.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Address.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Credit.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Profile.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Proposal.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Transaction.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.ts" />
     <TypeScriptCompile Include="Angular\src\main.ts" />
