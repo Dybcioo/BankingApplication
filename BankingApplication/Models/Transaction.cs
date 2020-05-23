@@ -31,7 +31,7 @@ namespace BankingApplication.Models
         public DateTime Date { get; set; }
 
         [Required]
-        [Display(Name = "Numer konta")]
+        [Display(Name = "Numer konta  nadawcy/odbiorcy")]
         [RegularExpression(@"^[0-9]{26}$", ErrorMessage = "Numer konta musi zwierać wyłącznie cyfry i mieć długość 26 cyfr")]
         public string ToAccountNumber { get; set; }
         

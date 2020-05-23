@@ -9,8 +9,7 @@ using System.Web;
 
 namespace BankingApplication.DAL
 {
-    public class AccountInitializer : DropCreateDatabaseIfModelChanges
-        <AccountContext>
+    public class AccountInitializer : DropCreateDatabaseIfModelChanges<AccountContext>
     {
         protected override void Seed(AccountContext context)
         {
