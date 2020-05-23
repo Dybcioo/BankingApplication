@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -33,9 +34,11 @@ namespace BankingApplication.Models
 
 
         [Display(Name = "Adres")]
+        [JsonIgnore]
         public virtual Address Address { get; set; }
 
         [Display(Name = "Konta")]
+        [JsonIgnore]
         public virtual List<Account> Accounts { get; set; }
     }
 }

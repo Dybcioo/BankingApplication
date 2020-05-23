@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,15 +28,19 @@ namespace BankingApplication.Models
 
 
 
+        [JsonIgnore]
         public virtual Profile Profile { get; set; }
 
         [Display(Name = "Transakcje")]
+        [JsonIgnore]
         public virtual List<Transaction> Transactions { get; set; }
 
         [Display(Name = "Kredyty")]
+        [JsonIgnore]
         public virtual List<Credit> Credits { get; set; }
 
         [Display(Name = "Wnioski")]
+        [JsonIgnore]
         public virtual List<Proposal> Proposals { get; set; }
     }
 }

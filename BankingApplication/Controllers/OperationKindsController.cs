@@ -11,6 +11,7 @@ using BankingApplication.Models;
 
 namespace BankingApplication.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class OperationKindsController : Controller
     {
         private AccountContext db = new AccountContext();

@@ -197,6 +197,12 @@
     <Compile Include="Controllers\OperationKindsController.cs" />
     <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\ProposalsController.cs" />
+    <Compile Include="Controllers\REST\AccountsController.cs" />
+    <Compile Include="Controllers\REST\AddressesController.cs" />
+    <Compile Include="Controllers\REST\CreditsController.cs" />
+    <Compile Include="Controllers\REST\ProfilesController.cs" />
+    <Compile Include="Controllers\REST\ProposalsController.cs" />
+    <Compile Include="Controllers\REST\TransactionsController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="DAL\AccountContext.cs" />
     <Compile Include="DAL\AccountInitializer.cs" />

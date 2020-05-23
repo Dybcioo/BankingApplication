@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankingApplication.Models
@@ -30,6 +31,7 @@ namespace BankingApplication.Models
 
 
         [Display(Name = "Profil")]
+        [JsonIgnore]
         public virtual Profile Profile { get; set; }
     }
 }

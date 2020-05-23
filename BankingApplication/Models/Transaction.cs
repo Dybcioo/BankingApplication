@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 
@@ -43,9 +44,11 @@ namespace BankingApplication.Models
 
 
         [Display(Name = "Rodzaj operacji")]
+        [JsonIgnore]
         public virtual OperationKind OperationKind { get; set; }
 
         [Display(Name = "Konto")]
+        [JsonIgnore]
         public virtual Account Account { get; set; }
     }
 

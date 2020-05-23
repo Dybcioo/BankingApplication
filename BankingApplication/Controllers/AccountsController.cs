@@ -12,6 +12,7 @@ using PagedList;
 
 namespace BankingApplication.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AccountsController : Controller
     {
         private AccountContext db = new AccountContext();

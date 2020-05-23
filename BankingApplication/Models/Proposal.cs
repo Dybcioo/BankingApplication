@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BankingApplication.Models
@@ -36,6 +37,7 @@ namespace BankingApplication.Models
 
 
         [Display(Name = "Konto")]
+        [JsonIgnore]
         public virtual Account Account { get; set; }
     }
 

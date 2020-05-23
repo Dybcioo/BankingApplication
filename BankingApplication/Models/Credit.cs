@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BankingApplication.Models
@@ -28,7 +29,9 @@ namespace BankingApplication.Models
         public Decimal RepaymentAmount { get; set; }
         public int AccountId { get; set; }
 
+
         [Display(Name = "Konto")]
+        [JsonIgnore]
         public virtual Account Account { get; set; }
     }
 }

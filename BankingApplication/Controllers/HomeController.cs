@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BankingApplication.Controllers
 {
+    
     public class HomeController : Controller
     {
         private AccountContext db = new AccountContext();
@@ -22,6 +23,7 @@ namespace BankingApplication.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize]
         public ActionResult About()
         {
             IQueryable<TransactionIO> data = from transaction in db.Transactions
