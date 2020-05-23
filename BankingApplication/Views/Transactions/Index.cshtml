@@ -15,7 +15,7 @@
 {
     <p>
         Znajdź po tytule: @Html.TextBox("search", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
+        <input type="submit" value="Szukaj" />
     </p>
 }
 <table class="table">
@@ -32,6 +32,9 @@
             @Html.ActionLink("Kwota transakcji", "Index", new { sort = ViewBag.AmountSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
+        <th>
+            @Html.ActionLink("Przychodzące/Wychodzące", "Index", new { sort = ViewBag.DirectionSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
     </tr>
 
 
@@ -75,7 +78,18 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
+                    @if (item.Direction.ToString() == "Inbound")
+                    {
+                        <font color="green">
+                            @Html.DisplayFor(modelItem => item.Amount) zł
+                        </font>
+                    }
+                    @if (item.Direction.ToString() == "Outbound")
+                    {
+                        <font color="red">
+                           - @Html.DisplayFor(modelItem => item.Amount) zł
+                        </font>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)

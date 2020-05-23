@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BankingApplication.DAL;
 using BankingApplication.Models;
+using PagedList;
 
 namespace BankingApplication.Controllers
 {
@@ -16,10 +17,49 @@ namespace BankingApplication.Controllers
         private AccountContext db = new AccountContext();
 
         // GET: Credits
-        public ActionResult Index()
+        public ActionResult Index(String sort, string currentFilter, int? page)
         {
-            var credits = db.Credits.Include(c => c.Account);
-            return View(credits.ToList());
+            ViewBag.CurrentSort = sort;
+            ViewBag.DateSortParm = String.IsNullOrEmpty(sort) ? "date_desc" : "";
+            ViewBag.YearSortParm = sort == "year" ? "year_desc" : "year";
+            ViewBag.AmountSortParm = sort == "amount" ? "amount_desc" : "amount";
+            ViewBag.RepaymentAmountSortParm = sort == "RepaymentAmount" ? "RepaymentAmount_desc" : "RepaymentAmount";
+
+
+            var credits = db.Credits.Include(t => t.Account);
+
+
+            switch (sort)
+            {
+                case "date_desc":
+                    credits = credits.OrderByDescending(t => t.StartDate);
+                    break;
+                case "year":
+                    credits = credits.OrderBy(t => t.Years);
+                    break;
+                case "year_desc":
+                    credits = credits.OrderByDescending(t => t.Years);
+                    break;
+                case "amount_desc":
+                    credits = credits.OrderByDescending(t => t.LoanAmount);
+                    break;
+                case "amount":
+                    credits = credits.OrderBy(t => t.LoanAmount);
+                    break;
+                case "RepaymentAmount":
+                    credits = credits.OrderBy(t => t.RepaymentAmount);
+                    break;
+                case "RepaymentAmount_desc":
+                    credits = credits.OrderByDescending(t => t.RepaymentAmount);
+                    break;
+                default:
+                    credits = credits.OrderBy(t => t.StartDate);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(credits.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Credits/Details/5

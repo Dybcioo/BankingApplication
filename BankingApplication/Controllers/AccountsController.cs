@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BankingApplication.DAL;
 using BankingApplication.Models;
+using PagedList;
 
 namespace BankingApplication.Controllers
 {
@@ -16,9 +17,51 @@ namespace BankingApplication.Controllers
         private AccountContext db = new AccountContext();
 
         // GET: Accounts
-        public ActionResult Index()
+        public ActionResult Index(String sort, string currentFilter, String search, int? page)
         {
-            return View(db.Accounts.ToList());
+            ViewBag.CurrentSort = sort;
+            ViewBag.DateSortParm = String.IsNullOrEmpty(sort) ? "date_desc" : "";
+            ViewBag.BalanceSortParm = sort == "balance" ? "balance_desc" : "balance";
+
+            if (search != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
+            IQueryable<Account> accounts = db.Accounts;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                accounts = accounts.Where(a => a.AccountNumber.Contains(search));
+            }
+
+
+
+            switch (sort)
+            {
+                case "date_desc":
+                    accounts = accounts.OrderByDescending(a => a.CreationDate);
+                    break;
+                case "balance":
+                    accounts = accounts.OrderBy(a => a.Balance);
+                    break;
+                case "balance_desc":
+                    accounts = accounts.OrderByDescending(a => a.Balance);
+                    break;
+                default:
+                    accounts = accounts.OrderBy(a => a.CreationDate);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(accounts.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Accounts/Details/5

@@ -1,57 +1,84 @@
-﻿@model IEnumerable<BankingApplication.Models.Credit>
+﻿@model PagedList.IPagedList<BankingApplication.Models.Credit>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kredyty";
 }
 
-<h2>Index</h2>
+<h2>Kredyty</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Przyznaj kredyt", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Account.AccountNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Years)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoanAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RepaymentAmount)
+            @Html.ActionLink("Data", "Index", new { sort = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
+        <th>
+            @Html.ActionLink("Lata spłaty", "Index", new { sort = ViewBag.YearSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+        <th>
+            @Html.ActionLink("Kwota kredytu", "Index", new { sort = ViewBag.AmountSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th></th>
+        <th>
+            @Html.ActionLink("Kwota do spłaty", "Index", new { sort = ViewBag.RepaymentAmountSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account.AccountNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Years)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoanAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RepaymentAmount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Account.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Years)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().LoanAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().RepaymentAmount)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Years)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RepaymentAmount)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sort = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

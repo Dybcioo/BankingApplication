@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using BankingApplication.DAL;
 using BankingApplication.Models;
@@ -22,7 +20,8 @@ namespace BankingApplication.Controllers
             ViewBag.CurrentSort = sort;
             ViewBag.AccountSortParm = String.IsNullOrEmpty(sort) ? "account_desc" : "";
             ViewBag.KindSortParm = sort == "kind" ? "kind_desc" : "kind";
-            ViewBag.AmountSortParm = sort == "amount" ? "amount_desc" : "amount";
+            ViewBag.LoanAmountSortParm = sort == "LoanAmount" ? "LoanAmount_desc" : "LoanAmount";
+            ViewBag.DirectionSortParm = sort == "direction" ? "direction_desc" : "direction";
 
             if (search != null)
             {
@@ -60,6 +59,12 @@ namespace BankingApplication.Controllers
                     break;
                 case "amount":
                     transactions = transactions.OrderBy(t => t.Amount);
+                    break;
+                case "direction":
+                    transactions = transactions.OrderBy(t => t.Direction);
+                    break;
+                case "direction_desc":
+                    transactions = transactions.OrderByDescending(t => t.Direction);
                     break;
                 default:
                     transactions = transactions.OrderBy(t => t.Account.AccountNumber);

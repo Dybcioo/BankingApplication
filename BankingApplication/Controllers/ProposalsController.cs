@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BankingApplication.DAL;
 using BankingApplication.Models;
+using PagedList;
 
 namespace BankingApplication.Controllers
 {
@@ -16,10 +17,34 @@ namespace BankingApplication.Controllers
         private AccountContext db = new AccountContext();
 
         // GET: Proposals
-        public ActionResult Index()
+        public ActionResult Index( string currentFilter, String search, int? page, string only)
         {
+            if (search != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = search;
+
             var proposals = db.Proposals.Include(p => p.Account);
-            return View(proposals.ToList());
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                    proposals = proposals.Where(s => s.MotherName.Contains(search)
+                    || s.FatherName.Contains(search)
+                    || s.MotherMaidenName.Contains(search));
+            }
+            if (!String.IsNullOrEmpty(only))
+            {
+                proposals = proposals.Where(s => s.Status == status.Processed);
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(proposals.OrderBy(p => p.Id).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Proposals/Details/5
