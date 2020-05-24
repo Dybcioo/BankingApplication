@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\Angular\HomeAngularController.cs" />
     <Compile Include="Controllers\CreditsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Controllers\REST\AccountsController.cs" />
     <Compile Include="Controllers\REST\AddressesController.cs" />
     <Compile Include="Controllers\REST\CreditsController.cs" />
+    <Compile Include="Controllers\REST\OperationKindsController.cs" />
     <Compile Include="Controllers\REST\ProfilesController.cs" />
     <Compile Include="Controllers\REST\ProposalsController.cs" />
     <Compile Include="Controllers\REST\TransactionsController.cs" />
@@ -228,6 +230,7 @@
     <Content Include="Angular\e2e\protractor.conf.js" />
     <Content Include="Angular\karma.conf.js" />
     <Content Include="Angular\src\app\app.component.html" />
+    <Content Include="Angular\src\app\components\account\account.component.html" />
     <Content Include="Angular\src\favicon.ico" />
     <Content Include="Angular\src\index.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -255,6 +258,7 @@
     <Content Include="Angular\tsconfig.json" />
     <Content Include="Angular\tsconfig.spec.json" />
     <Content Include="Angular\tslint.json" />
+    <Content Include="Angular\src\app\components\account\account.component.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -334,6 +338,7 @@
     <Content Include="Views\Transactions\Details.cshtml" />
     <Content Include="Views\Transactions\Edit.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\HomeAngular\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,12 +361,15 @@
     <TypeScriptCompile Include="Angular\e2e\src\app.po.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.module.ts" />
+    <TypeScriptCompile Include="Angular\src\app\components\account\account.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Account.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Address.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Credit.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Kind.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Profile.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Proposal.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Transaction.ts" />
+    <TypeScriptCompile Include="Angular\src\app\services\main.service.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.ts" />
     <TypeScriptCompile Include="Angular\src\main.ts" />

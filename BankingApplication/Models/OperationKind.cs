@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BankingApplication.Models
@@ -13,6 +14,7 @@ namespace BankingApplication.Models
 
 
         [Display(Name = "Transakcje")]
+        [JsonIgnore]
         public virtual List<Transaction> Transactions { get; set; }
     }
 }

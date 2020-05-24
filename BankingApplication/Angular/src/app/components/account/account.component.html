@@ -1,0 +1,42 @@
+<div style="text-align:center">
+  
+  <div id="accounts">
+    <h1>
+      Konto
+    </h1>
+    <select name="account" [(ngModel)]="currentId" (input)="check($event)">
+      <option *ngFor="let a of account" [value]="a.id">
+        {{a.accountNumber}}
+      </option>
+    </select>
+  </div>
+  
+  <div id="balance">
+    Dostępne środki:<br/>
+    <p>{{currentAccount?.balance}} PLN</p>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>DATA</th>
+      <th>RODZAJ</th>
+      <th>TYTUŁ</th>
+      <th>KWOTA</th>
+    </tr>
+    <tr *ngFor="let t of transaction">
+      <td>
+        {{t.date | date: 'dd/MM/yyyy'}}
+      </td>
+      <td>
+        {{kind[t.operationKindId-1]?.kind}}
+      </td>
+      <td>
+        {{t.title}}
+      </td>
+      <td>
+        {{t.amount | number : '1.2-2'}}
+      </td>
+    </tr>
+  </table>
+  
+</div>

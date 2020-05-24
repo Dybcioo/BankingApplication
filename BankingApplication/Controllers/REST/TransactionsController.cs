@@ -26,18 +26,12 @@ namespace BankingApplication.Controllers.REST
         }
 
         // GET: api/Transactions/5
-        [ResponseType(typeof(Transaction))]
-        public IHttpActionResult GetTransaction(int id)
+        public IQueryable<Transaction> GetTransaction(int id)
         {
             Profile profile = db.Profiles.Single(p => p.Username == User.Identity.Name);
-            Transaction transaction = profile.Accounts.SelectMany(a => a.Transactions).Single(t => t.Id == id);
-            if (transaction == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(transaction);
+            return profile.Accounts.SelectMany(a => a.Transactions).Where(t => t.AccountId == id).AsQueryable();
         }
+
 
         // PUT: api/Transactions/5
         [ResponseType(typeof(void))]

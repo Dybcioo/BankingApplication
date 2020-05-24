@@ -62,7 +62,8 @@ namespace BankingApplication.DAL
 
             var accounts = new List<Account>
             {
-                new Account {AccountNumber = "00195000010000000000000000", Balance = 20200, CreationDate = new DateTime(2002,11,23).Date, Profile = profiles[0]},
+                new Account {AccountNumber = "00195000010000000000000000", Balance = 20100, CreationDate = new DateTime(2002,11,23).Date, Profile = profiles[0]},
+                new Account {AccountNumber = "00196000010000000000000000", Balance = 212300, CreationDate = new DateTime(2020,4,21).Date, Profile = profiles[1]},
                 new Account {AccountNumber = "00101000010000000000000000", Balance = 20200, CreationDate = new DateTime(2020,4,21).Date, Profile = profiles[1]}
             };
             accounts.ForEach(a => context.Accounts.Add(a));

@@ -22,7 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Strona główna", "Index", "HomeAngular")</li>
                     @if (Context.User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Konta", "Index", "Accounts")</li>
