@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BankingApplication.Models;
 using BankingApplication.DAL;
+using System.Net.Mail;
 
 namespace BankingApplication.Controllers
 {
@@ -163,6 +164,8 @@ namespace BankingApplication.Controllers
                     db.Profiles.Add(profile);
                     db.SaveChanges();
 
+                    Message.SendMail(model.Email, "Rejestracja w najlepszym banku po tej stronie Wisły", "Dziękujemy za zaufanie!");
+
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -171,6 +174,7 @@ namespace BankingApplication.Controllers
             // Dotarcie do tego miejsca wskazuje, że wystąpił błąd, wyświetl ponownie formularz
             return View(model);
         }
+
 
         //
         // GET: /Account/ConfirmEmail

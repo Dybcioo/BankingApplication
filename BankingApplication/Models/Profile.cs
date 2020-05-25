@@ -32,6 +32,8 @@ namespace BankingApplication.Models
         [Display(Name = "Aktywny")]
         public bool Active { get; set; }
 
+        public string Photo { get; set; }
+
 
         [Display(Name = "Adres")]
         [JsonIgnore]

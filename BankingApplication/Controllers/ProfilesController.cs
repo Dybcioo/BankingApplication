@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -75,7 +76,25 @@ namespace BankingApplication.Controllers
             return View(profile);
         }
 
-        
+        // POST: Profiles/Details/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details([Bind(Include = "Id")] Profile profile)
+        {
+            Profile prof = db.Profiles.Find(profile.Id);
+            HttpPostedFileBase file = Request.Files["photoFile"];
+            
+            if(file != null && file.ContentLength > 0)
+            {
+                prof.Photo = file.FileName;
+                file.SaveAs(HttpContext.Server.MapPath("~/Photos/"+file.FileName));
+            }
+            db.Entry(prof).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Details");
+        }
+
+
 
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)

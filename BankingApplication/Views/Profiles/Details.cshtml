@@ -9,6 +9,34 @@
 <div>
     <h4>Profil</h4>
     <hr />
+
+            @using (Html.BeginForm("Details", "Profiles", FormMethod.Post,
+                                new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="photoFile" />
+                            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Dodaj/Edytuj" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+    
+    @if(Model.Photo != null)
+    {
+        <img src="~/Photos/@Model.Photo"  alt="" width="150px" height="200px"/>
+    }
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Username)
@@ -127,7 +155,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Wróć do listy", "Index")
-</p>
+    <p>
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Wróć do listy", "Index")
+    </p>

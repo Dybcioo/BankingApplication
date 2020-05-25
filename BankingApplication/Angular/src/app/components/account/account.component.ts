@@ -50,6 +50,10 @@ export class AccountComponent implements OnInit {
     }  
   }
 
+  getColor(direction: number): string {
+    return direction == 0 ? "red" : "green";
+  }
+
   
 
 }
