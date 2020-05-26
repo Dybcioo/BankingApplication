@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import Account from '../../models/Account';
 import Transaction from '../../models/Transaction';
 import { MainService } from '../../services/main.service';
 import { FormsModule } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 import Kind from '../../models/Kind';
 
 @Component({
@@ -12,15 +13,17 @@ import Kind from '../../models/Kind';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
+  public LOCAL = 'https://localhost:44305/HomeAngular/';
   account: Array<Account>;
   transaction: Array<Transaction>;
-  kind: Array<Kind>;
+  public kind: Array<Kind>;
   currentId: number;
   currentAccount: Account;
   current: string;
+  kaczka: boolean = false;
   
 
-  constructor(private service: MainService) { }
+  constructor(private service: MainService, @Inject(DOCUMENT) private document: Document) { }
 
 
   ngOnInit(): void {
@@ -53,7 +56,9 @@ export class AccountComponent implements OnInit {
   getColor(direction: number): string {
     return direction == 0 ? "red" : "green";
   }
-
+  newTrans(arg: boolean): void {
+    this.kaczka = arg;
+  }
   
 
 }

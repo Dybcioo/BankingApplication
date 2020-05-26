@@ -12,7 +12,7 @@ import Kind from '../models/Kind';
 export class MainService {
   public API = 'https://localhost:44305/api';
   public ACCOUNT_ENDPOINT = `${this.API}/Accounts`;
-  public TRANSACTION_ENDPOINT = `${this.API}/Transactions/`;
+  public TRANSACTION_ENDPOINT = `${this.API}/Transactions`;
   public KIND_ENDPOINT = `${this.API}/OperationKinds`;
 
   constructor(private http: HttpClient) { }
@@ -21,9 +21,13 @@ export class MainService {
     return this.http.get<Array<Account>>(this.ACCOUNT_ENDPOINT);
   }
   getTransaction(id: number): Observable<Array<Transaction>> {
-    return this.http.get<Array<Transaction>>(this.TRANSACTION_ENDPOINT+id);
+    return this.http.get<Array<Transaction>>(this.TRANSACTION_ENDPOINT+"/"+id);
   }
   getAllKinds(): Observable<Array<Kind>> {
     return this.http.get<Array<Kind>>(this.KIND_ENDPOINT);
   }
+  addTransaction(trans: Transaction): Observable<Transaction> {
+    return this.http.post<Transaction>(this.TRANSACTION_ENDPOINT, trans);
+  }
+
 }

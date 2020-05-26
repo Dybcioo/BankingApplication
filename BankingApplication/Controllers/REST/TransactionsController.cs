@@ -76,9 +76,32 @@ namespace BankingApplication.Controllers.REST
             {
                 return BadRequest(ModelState);
             }
+            transaction.Date = DateTime.Now;
+            if (transaction.Direction == direction.Outbound)
+            {
+                db.Accounts.Find(transaction.AccountId).Balance -= transaction.Amount;
+            }
+            else
+            {
+                db.Accounts.Find(transaction.AccountId).Balance += transaction.Amount;
+            }
+           
 
             db.Transactions.Add(transaction);
             db.SaveChanges();
+
+            if (transaction.OperationKindId == 1)
+            {
+                Account account = db.Accounts.Single(a => a.AccountNumber.Equals(transaction.ToAccountNumber));
+                if (account != null)
+                {
+                    transaction.ToAccountNumber = db.Accounts.Find(transaction.AccountId).AccountNumber;
+                    transaction.AccountId = account.Id;
+                    transaction.Direction = direction.Inbound;
+                    db.Transactions.Add(transaction);
+                    db.SaveChanges();
+                }
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = transaction.Id }, transaction);
         }

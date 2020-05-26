@@ -1,44 +1,54 @@
 <body class="bg">
-<div class="mx-auto" style="width: 60%;" >
-  
-  <div id="accounts" class="float-lg-left">
-    <h1>
-      Konto
-    </h1>
-    <select class="custom-select custom-select-lg mb-3 bg-white" name="account" [(ngModel)]="currentId" (input)="check($event)">
-      <option *ngFor="let a of account" [value]="a.id" >
-        {{a.accountNumber}}
-      </option>
-    </select>
-  </div>
-  
-  <div id="balance" class="float-lg-right">
-    Dostępne środki:<br/>
-    <p>{{currentAccount?.balance}} PLN</p>
-  </div>
+  <div class="mx-auto" style="width: 60%;">
+    <button *ngIf="kaczka" type="button" (click)="newTrans(false)">Jednak nie</button>
+    <button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
 
-  <table class="table table-dark">
-    <tr>
-      <th>DATA</th>
-      <th>RODZAJ</th>
-      <th>TYTUŁ</th>
-      <th>KWOTA</th>
-    </tr>
-    <tr *ngFor="let t of transaction" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind] ="kind[t.operationKindId-1]?.kind">
-      <td>
-        {{t.date | date: 'dd/MM/yyyy'}}
-      </td>
-      <td>
-        {{kind[t.operationKindId-1]?.kind}}
-      </td>
-      <td>
-        {{t.title}}
-      </td>
-      <td [ngStyle] ="{color: getColor(t.direction)}">
-        {{t.amount | number : '1.2-2'}} PLN
-      </td>
-    </tr>
-  </table>
-  
-</div>
+    <p *ngIf="kaczka">
+      <app-transaction [kind]="kind"></app-transaction>
+    </p>
+
+    <br />
+    <br />
+    <br />
+    <div id="accounts" class="float-lg-left">
+      <h1>
+        Konto
+      </h1>
+      <select class="custom-select custom-select-lg mb-3 bg-white" name="account" [(ngModel)]="currentId" (input)="check($event)">
+        <option *ngFor="let a of account" [value]="a.id">
+          {{a.accountNumber}}
+        </option>
+      </select>
+    </div>
+
+    <div id="balance" class="float-lg-right">
+      Dostępne środki:<br />
+      <p>{{currentAccount?.balance}} PLN</p>
+    </div>
+
+    <table class="table table-dark">
+      <tr>
+        <th>DATA</th>
+        <th>RODZAJ</th>
+        <th>TYTUŁ</th>
+        <th>KWOTA</th>
+      </tr>
+      <tr *ngFor="let t of transaction" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind]="kind[t.operationKindId-1]?.kind">
+        <td>
+          {{t.date | date: 'dd/MM/yyyy'}}
+        </td>
+        <td>
+          {{kind[t.operationKindId-1]?.kind}}
+        </td>
+        <td>
+          {{t.title}}
+        </td>
+        <td [ngStyle]="{color: getColor(t.direction)}">
+          {{t.amount | number : '1.2-2'}} PLN
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
  </body>

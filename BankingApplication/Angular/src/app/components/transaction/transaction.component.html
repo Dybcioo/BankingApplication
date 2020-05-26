@@ -1,0 +1,67 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <div id="kind" class="float-lg-left">
+    <h1>
+      Rodzaj transakcji
+    </h1>
+    <select required class="custom-select custom-select-lg mb-3 bg-white" formControlName="operationKindId" (input)="check($event)">
+      <option *ngFor="let k of kind" [value]="k.id">
+        {{k.kind}}
+      </option>
+    </select>
+
+  </div>
+
+  <div id="accounts" class="float-lg-left">
+    <h1>
+      Konto
+    </h1>
+    <select class="custom-select custom-select-lg mb-3 bg-white"  formControlName="accountId">
+      <option *ngFor="let a of account" [value]="a.id">
+        {{a.accountNumber}}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="currentId == 1">
+    <label for="NrKonta">
+      Numer konta
+    </label>
+    <input minlength="26" maxlength="26" id="toAccountNumber" type="text" formControlName="toAccountNumber">
+    <div *ngIf="form.controls['toAccountNumber'].invalid && (form.controls['toAccountNumber'].dirty || form.controls['toAccountNumber'].touched) "
+         class="alert alert-danger">
+      Numer konta musi mieć 26 cyfr
+    </div>
+  </div>
+
+
+
+  <div>
+    <label for="Kwota">
+      Kwota transakcji:
+    </label>
+    <input required min="0" id="amount" type="number" formControlName="amount">
+  </div>
+
+  <div *ngIf="currentId != 4">
+    <label for="Tytuł">
+      Tytuł
+    </label>
+    <input required id="title" type="text" formControlName="title">
+    <div *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched) "
+         class="alert alert-danger">
+      Tytuł jest wymagany
+    </div>
+  </div>
+
+  <div *ngIf="currentId == 1">
+    <label for="Opis">
+      Opis
+    </label>
+    <textarea id="description" type="text" formControlName="description"></textarea>
+  </div>
+
+  <button class="button" type="submit" [disabled]="!form.valid">Wykonaj</button>
+
+</form>
+<h1>{{error}}</h1>
