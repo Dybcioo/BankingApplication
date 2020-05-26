@@ -269,6 +269,8 @@
     <Content Include="Angular\node_modules\bootstrap\js\src\util.js" />
     <Content Include="Angular\src\app\app.component.html" />
     <Content Include="Angular\src\app\components\account\account.component.html" />
+    <Content Include="Angular\src\app\components\credit\credit.component.html" />
+    <Content Include="Angular\src\app\components\proposal\proposal.component.html" />
     <Content Include="Angular\src\app\components\transaction\transaction.component.html" />
     <Content Include="Angular\src\favicon.ico" />
     <Content Include="Angular\src\index.html" />
@@ -415,6 +417,8 @@
     <Content Include="Angular\node_modules\bootstrap\scss\_utilities.scss" />
     <Content Include="Angular\node_modules\bootstrap\scss\_variables.scss" />
     <Content Include="Angular\src\app\components\transaction\transaction.component.scss" />
+    <Content Include="Angular\src\app\components\credit\credit.component.scss" />
+    <Content Include="Angular\src\app\components\proposal\proposal.component.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -520,6 +524,8 @@
     <TypeScriptCompile Include="Angular\src\app\app.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\app.module.ts" />
     <TypeScriptCompile Include="Angular\src\app\components\account\account.component.ts" />
+    <TypeScriptCompile Include="Angular\src\app\components\credit\credit.component.ts" />
+    <TypeScriptCompile Include="Angular\src\app\components\proposal\proposal.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\components\transaction\transaction.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Account.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Address.ts" />

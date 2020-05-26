@@ -1,0 +1,28 @@
+
+<h2>Kredyty</h2>
+<table class="table table-dark">
+  <tr>
+    <th>DATA ZATWIERDZENIA</th>
+    <th>Okres</th>
+    <th>KWOTA KREDYTU</th>
+    <th>KWOTA DO SPŁATY</th>
+    <th>NUMER KONTA</th>
+  </tr>
+  <tr *ngFor="let c of credit" >
+    <td>
+      {{c.startDate | date: 'dd/MM/yyyy'}}
+    </td>
+    <td>
+      {{c.years}} lat
+    </td>
+    <td>
+      {{c.loanAmount | number : '1.2-2'}} PLN
+    </td>
+    <td>
+      {{c.repaymentAmount | number : '1.2-2'}} PLN
+    </td>
+    <td>
+      {{getAccount(c.accountId)}}
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,38 @@
+<table class="table table-dark">
+  <tr>
+    <th>ID</th>
+    <th>DOCHÓD</th>
+    <th>IMIE OJCA</th>
+    <th>IMIE MATKI</th>
+    <th>NAZWISKO PANIEŃSKIE MATKI</th>
+    <th>KWOTA KREDYTU</th>
+    <th>STATUS</th>
+    <th>NUMER KONTA</th>
+  </tr>
+  <tr *ngFor="let p of proposal" [ngStyle]="{color: getColor(p.status)}" >
+    <td>
+      {{p.id}}
+    </td>
+    <td>
+      {{p.income | number : '1.2-2'}} PLN
+    </td>
+    <td>
+      {{p.fatherName}}
+    </td>
+    <td>
+      {{p.motherName}}
+    </td>
+    <td>
+      {{p.motherMaidenName}} 
+    </td>
+    <td>
+      {{p.loanAmount | number : '1.2-2'}} PLN
+    </td>
+    <td >
+      {{getStatus(p.status)}}
+    </td>
+    <td>
+      {{getAccount(p.accountId)}}
+    </td>
+  </tr>
+</table>

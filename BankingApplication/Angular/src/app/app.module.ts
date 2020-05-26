@@ -10,13 +10,17 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowDirective } from './shared/show.directive';
 import { TransactionComponent } from './components/transaction/transaction.component';
+import { CreditComponent } from './components/credit/credit.component';
+import { ProposalComponent } from './components/proposal/proposal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     ShowDirective,
-    TransactionComponent
+    TransactionComponent,
+    CreditComponent,
+    ProposalComponent
   ],
   imports: [
     HttpClientModule,
