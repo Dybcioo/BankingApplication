@@ -7,6 +7,8 @@ import Transaction from '../models/Transaction';
 import Kind from '../models/Kind';
 import Credit from '../models/Credit';
 import Proposal from '../models/Proposal';
+import Profile from '../models/Profile';
+import Address from '../models/Address';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,8 @@ export class MainService {
   public KIND_ENDPOINT = `${this.API}/OperationKinds`;
   public CREDIT_ENDPOINT = `${this.API}/Credits`;
   public PROPOSAL_ENDPOINT = `${this.API}/Proposals`;
+  public PROFILE_ENDPOINT = `${this.API}/Profiles`;
+  public ADDRESS_ENDPOINT = `${this.API}/Addresses`;
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +42,14 @@ export class MainService {
   }
   getAllProposals(): Observable<Array<Proposal>> {
     return this.http.get<Array<Proposal>>(this.PROPOSAL_ENDPOINT);
+  }
+  addProposal(prop: Proposal): Observable<Proposal> {
+    return this.http.post<Proposal>(this.PROPOSAL_ENDPOINT, prop);
+  }
+  getProfile(): Observable<Profile> {
+    return this.http.get<Profile>(this.PROFILE_ENDPOINT);
+  }
+  getAddress(): Observable<Address> {
+    return this.http.get<Address>(this.ADDRESS_ENDPOINT);
   }
 }

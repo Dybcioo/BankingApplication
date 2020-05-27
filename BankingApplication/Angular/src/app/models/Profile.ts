@@ -5,4 +5,5 @@ export default class Profile {
   surname: string;
   born: Date;
   active: boolean;
+  photo: string;
 }

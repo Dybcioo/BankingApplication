@@ -1,0 +1,32 @@
+<div id="main">
+ <h1>Mój profil</h1>
+  <br />
+  <img src="/Photos/{{profile?.photo}}"  alt="" width="100px" height="150px"/>
+  <hr />
+  <br />
+  <br />
+      <h2 class="float-lg-right">{{profile?.id}}</h2>
+      <h3 class="float-lg-right">ID KLIENTA:  &nbsp;&nbsp;</h3> 
+    <h3>IMIĘ I NAZWISKO</h3>
+      <h2>{{profile?.name}}  {{profile?.surname}}</h2>
+  <hr />
+  <br />
+    <h3>DATA URODZENIA</h3>
+    <h2>{{profile?.born | date: 'dd/MM/yyyy'}}</h2>
+  <hr />
+ <h1>Adres</h1>
+  <br />
+  <h3>Kraj</h3>
+    <h2>{{address?.country}}</h2>
+  <h3 >Województwo</h3>
+    <h2>{{address?.province}}</h2><br />
+  <h3>Miasto</h3>
+    <h2>{{address?.city}}</h2><br />
+  <h3>Ulica</h3>
+    <h2>{{address?.street}}</h2><br />
+  <button class="float-lg-right" type="button" (click)="hid()">OK</button>
+  <h3>Numer domu/mieszkania</h3>
+    <h2>{{address?.numberHouse}}</h2><br />
+
+  
+</div>

@@ -1,11 +1,24 @@
 body, html {
-  height: 100%;
-}
-
-.bg {
   background-image: url("https://mdbootstrap.com/img/Photos/Others/images/91.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+}
+
+.bg {
+  z-index: 1;
+  position: absolute;
+}
+
+.profile {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:rgb(255, 255, 255, 0.85);
+  width: 95%;
+  height: 800px;
 }

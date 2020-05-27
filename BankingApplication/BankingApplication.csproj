@@ -270,6 +270,7 @@
     <Content Include="Angular\src\app\app.component.html" />
     <Content Include="Angular\src\app\components\account\account.component.html" />
     <Content Include="Angular\src\app\components\credit\credit.component.html" />
+    <Content Include="Angular\src\app\components\profile\profile.component.html" />
     <Content Include="Angular\src\app\components\proposal\proposal.component.html" />
     <Content Include="Angular\src\app\components\transaction\transaction.component.html" />
     <Content Include="Angular\src\favicon.ico" />
@@ -419,6 +420,7 @@
     <Content Include="Angular\src\app\components\transaction\transaction.component.scss" />
     <Content Include="Angular\src\app\components\credit\credit.component.scss" />
     <Content Include="Angular\src\app\components\proposal\proposal.component.scss" />
+    <Content Include="Angular\src\app\components\profile\profile.component.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -525,6 +527,7 @@
     <TypeScriptCompile Include="Angular\src\app\app.module.ts" />
     <TypeScriptCompile Include="Angular\src\app\components\account\account.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\components\credit\credit.component.ts" />
+    <TypeScriptCompile Include="Angular\src\app\components\profile\profile.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\components\proposal\proposal.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\components\transaction\transaction.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Account.ts" />
@@ -535,6 +538,7 @@
     <TypeScriptCompile Include="Angular\src\app\models\Proposal.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Transaction.ts" />
     <TypeScriptCompile Include="Angular\src\app\services\main.service.ts" />
+    <TypeScriptCompile Include="Angular\src\app\shared\profile.directive.ts" />
     <TypeScriptCompile Include="Angular\src\app\shared\show.directive.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="Angular\src\environments\environment.ts" />

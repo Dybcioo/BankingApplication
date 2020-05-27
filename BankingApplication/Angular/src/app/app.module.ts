@@ -12,6 +12,8 @@ import { ShowDirective } from './shared/show.directive';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { CreditComponent } from './components/credit/credit.component';
 import { ProposalComponent } from './components/proposal/proposal.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileDirective } from './shared/profile.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProposalComponent } from './components/proposal/proposal.component';
     ShowDirective,
     TransactionComponent,
     CreditComponent,
-    ProposalComponent
+    ProposalComponent,
+    ProfileComponent,
+    ProfileDirective
   ],
   imports: [
     HttpClientModule,

@@ -82,6 +82,7 @@ namespace BankingApplication.Controllers.REST
                 return BadRequest(ModelState);
             }
 
+            proposal.Status = status.Processed;
             db.Proposals.Add(proposal);
             db.SaveChanges();
 

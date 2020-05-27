@@ -1,5 +1,9 @@
 <body class="bg">
   <div class="mx-auto" style="width: 60%;">
+
+    <button class="float-lg-right" (click)="hid()" [hidden]="!isHidden">Pokaz mi</button>
+    <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
+
     <button *ngIf="kaczka" type="button" (click)="newTrans(false)">Jednak nie</button>
     <button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
 
@@ -57,5 +61,8 @@
     <br />
     <br />
     <app-proposal>brak</app-proposal>
+    <br />
+
+
   </div>
  </body>

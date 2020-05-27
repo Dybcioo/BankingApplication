@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../services/main.service';
 import Proposal from '../../models/Proposal';
 import Account from '../../models/Account';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-proposal',
@@ -11,6 +12,18 @@ import Account from '../../models/Account';
 export class ProposalComponent implements OnInit {
   proposal: Array<Proposal>;
   account: Array<Account>;
+  prop: Proposal;
+
+  form = new FormGroup({
+    income: new FormControl(''),
+    fatherName: new FormControl(''),
+    motherName: new FormControl(''),
+    motherMaidenName: new FormControl(''),
+    loanAmount: new FormControl(''),
+    accountId: new FormControl(''),
+  });
+
+  kaczka: boolean;
 
   constructor(private serv: MainService) { }
 
@@ -46,6 +59,21 @@ export class ProposalComponent implements OnInit {
       return 'green';
     } else {
       return 'red';
+    }
+  }
+
+  newTrans(arg: boolean): void {
+    this.kaczka = arg;
+  }
+
+  onSubmit() {
+    this.prop = this.form.value;
+    if (this.prop.loanAmount > 0 && this.prop.income > 0)
+    {
+      this.form.reset();
+      this.serv.addProposal(this.prop).subscribe(data => {
+        console.log(data);
+      });
     }
   }
 

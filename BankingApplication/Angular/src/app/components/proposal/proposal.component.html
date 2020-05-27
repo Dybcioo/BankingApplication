@@ -1,3 +1,4 @@
+<h2>Wnioski</h2>
 <table class="table table-dark">
   <tr>
     <th>ID</th>
@@ -9,7 +10,7 @@
     <th>STATUS</th>
     <th>NUMER KONTA</th>
   </tr>
-  <tr *ngFor="let p of proposal" [ngStyle]="{color: getColor(p.status)}" >
+  <tr *ngFor="let p of proposal" [ngStyle]="{color: getColor(p.status)}">
     <td>
       {{p.id}}
     </td>
@@ -23,12 +24,12 @@
       {{p.motherName}}
     </td>
     <td>
-      {{p.motherMaidenName}} 
+      {{p.motherMaidenName}}
     </td>
     <td>
       {{p.loanAmount | number : '1.2-2'}} PLN
     </td>
-    <td >
+    <td>
       {{getStatus(p.status)}}
     </td>
     <td>
@@ -36,3 +37,72 @@
     </td>
   </tr>
 </table>
+
+<button *ngIf="kaczka" type="button" (click)="newTrans(false)">W sumie stary samochód jest ok</button>
+<button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Złóż wniosek</button>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="kaczka">
+
+
+  <div id="accounts" class="float-lg-left">
+    <h1>
+      Konto
+    </h1>
+    <select class="custom-select custom-select-lg mb-3 bg-white" formControlName="accountId">
+      <option *ngFor="let a of account" [value]="a.id">
+        {{a.accountNumber}}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="imieOjca">
+      Imie Ojca:
+    </label>
+    <input required id="fatherName" type="text" formControlName="fatherName">
+    <div *ngIf="form.controls['fatherName'].invalid && (form.controls['fatherName'].dirty || form.controls['fatherName'].touched) "
+         class="alert alert-danger">
+      Imie Ojca jest wymagane
+    </div>
+  </div>
+
+  <div>
+    <label for="imieMatki">
+      Imie Matki:
+    </label>
+    <input required id="motherName" type="text" formControlName="motherName">
+    <div *ngIf="form.controls['motherName'].invalid && (form.controls['motherName'].dirty || form.controls['motherName'].touched) "
+         class="alert alert-danger">
+      Imie Matki jest wymagane
+    </div>
+  </div>
+
+  <div>
+    <label for="NazwiskoPanieńskieMatki">
+      Nazwisko Panieńskie Matki:
+    </label>
+    <input required id="motherMaidenName" type="text" formControlName="motherMaidenName">
+    <div *ngIf="form.controls['motherMaidenName'].invalid && (form.controls['motherMaidenName'].dirty || form.controls['motherMaidenName'].touched) "
+         class="alert alert-danger">
+      Nazwisko Panieńskie Matki jest wymagane
+    </div>
+  </div>
+
+  <div>
+    <label for="Dochód">
+      Dochód:
+    </label>
+    <input required min="0" id="income" type="number" formControlName="income">
+  </div>
+
+  <div>
+    <label for="Kwota kredytu">
+      Kwota kredytu:
+    </label>
+    <input required min="0" id="loanAmount" type="number" formControlName="loanAmount">
+  </div>
+
+
+  <button class="button" type="submit" [disabled]="!form.valid">Wykonaj</button>
+
+</form>

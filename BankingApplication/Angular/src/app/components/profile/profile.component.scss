@@ -1,0 +1,13 @@
+#main {
+  width: 50%;
+  margin: 0 auto;
+}
+button {
+  transition-duration: 0.4s;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: #555555;
+  color: white;
+}

@@ -21,6 +21,7 @@ export class AccountComponent implements OnInit {
   currentAccount: Account;
   current: string;
   kaczka: boolean = false;
+  isHidden: boolean = true;
   
 
   constructor(private service: MainService, @Inject(DOCUMENT) private document: Document) { }
@@ -59,6 +60,8 @@ export class AccountComponent implements OnInit {
   newTrans(arg: boolean): void {
     this.kaczka = arg;
   }
-  
+  hid() {
+    this.isHidden = !this.isHidden;
+  }
 
 }
