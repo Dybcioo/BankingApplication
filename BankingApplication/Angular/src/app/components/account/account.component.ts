@@ -22,6 +22,11 @@ export class AccountComponent implements OnInit {
   current: string;
   kaczka: boolean = false;
   isHidden: boolean = true;
+
+  pageSize: number = 5;
+  page: number = 1;
+  maxPage: number;
+  numbers: Array<number>;
   
 
   constructor(private service: MainService, @Inject(DOCUMENT) private document: Document) { }
@@ -34,12 +39,13 @@ export class AccountComponent implements OnInit {
       this.currentAccount = this.account[0];
       this.service.getTransaction(this.currentAccount.id).subscribe(data => {
         this.transaction = data;
+        this.maxPage = Math.ceil(this.transaction.length / this.pageSize);
+        this.numbers = Array(this.maxPage).fill(1).map((x, i) => i);
       })
     })
     this.service.getAllKinds().subscribe(data => {
       this.kind = data;
     })
-    
   }
 
   check(event) {
@@ -64,4 +70,26 @@ export class AccountComponent implements OnInit {
     this.isHidden = !this.isHidden;
   }
 
+  prev() {
+    if (this.page > 1) {
+      this.page--;
+    }
+  }
+
+  next() {
+    if (this.page < this.maxPage) {
+      this.page++;
+    }
+    console.log(this.maxPage);
+  }
+
+  last() {
+    this.page = this.maxPage;
+  }
+  first() {
+    this.page = 1;
+  }
+  pagee(p:number) {
+    this.page = p;
+  }
 }
