@@ -39,6 +39,8 @@ namespace BankingApplication.Models
         [Display(Name = "Opis")]
         public string Description { get; set; }
 
+        public int? CreditID { get; set; }
+
         public direction Direction { get; set; }
 
 

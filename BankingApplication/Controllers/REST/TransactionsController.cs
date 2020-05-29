@@ -85,7 +85,12 @@ namespace BankingApplication.Controllers.REST
             {
                 db.Accounts.Find(transaction.AccountId).Balance += transaction.Amount;
             }
-           
+            if (transaction.OperationKindId == 4)
+            {
+                db.Credits.Single(c => c.Id == transaction.CreditID).RepaymentAmount -= transaction.Amount;
+
+            }
+
 
             db.Transactions.Add(transaction);
             db.SaveChanges();

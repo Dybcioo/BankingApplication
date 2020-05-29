@@ -8,4 +8,5 @@ export default class Transaction {
   toAccountNumber: string;
   description: string;
   direction: number;
+  creditId: number;
 }

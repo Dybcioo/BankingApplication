@@ -4,6 +4,7 @@ import Kind from '../../models/Kind';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Account from '../../models/Account';
 import { MainService } from '../../services/main.service';
+import Credit from '../../models/Credit';
 
 @Component({
   selector: 'app-transaction',
@@ -12,6 +13,7 @@ import { MainService } from '../../services/main.service';
 })
 export class TransactionComponent implements OnInit {
   transaction: Transaction = new Transaction();
+  credit: Array<Credit>;
 
   form = new FormGroup({
     accountId: new FormControl(''),
@@ -19,7 +21,8 @@ export class TransactionComponent implements OnInit {
     title: new FormControl(''),
     amount: new FormControl(''),
     toAccountNumber: new FormControl(''),
-    description: new FormControl('')
+    description: new FormControl(''),
+    creditId: new FormControl('')
   });
 
   @Input()
@@ -36,7 +39,12 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit(): void {
      this.service.getAllAcounts().subscribe(data => {
-      this.account = data;
+       this.account = data;
+       this.form.controls['accountId'].setValue(this.account[0].id);
+     });
+    this.service.getAllCredits().subscribe(data => {
+      this.credit = data;
+      this.form.controls['creditId'].setValue(this.credit[0].id);
     });
   }
 
@@ -82,7 +90,7 @@ export class TransactionComponent implements OnInit {
           this.form.get('toAccountNumber').clearValidators();
           this.form.get('toAccountNumber').updateValueAndValidity();
         }
-        if (this.currentId == 4) {
+        if (this.currentId != 1) {
           this.form.get('title').clearValidators();
           this.form.get('title').updateValueAndValidity();
         }

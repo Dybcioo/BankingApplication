@@ -109,7 +109,7 @@ namespace BankingApplication.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Income,FatherName,MotherName,MotherMaidenName,LoanAmount,Status,AccountId")] Proposal proposal)
+        public ActionResult Edit([Bind(Include = "Id,Income,FatherName,MotherName,MotherMaidenName,LoanAmount,AccountId")] Proposal proposal)
         {
             if (ModelState.IsValid)
             {
@@ -134,6 +134,39 @@ namespace BankingApplication.Controllers
                 return HttpNotFound();
             }
             return View(proposal);
+        }
+
+        public ActionResult Accept(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Proposal proposal = db.Proposals.Find(id);
+            if (proposal == null)
+            {
+                return HttpNotFound();
+            }
+            proposal.Status = status.Accepted;
+            Credit credit = new Credit { AccountId = proposal.AccountId, LoanAmount = proposal.LoanAmount, StartDate = DateTime.Now, Years = new Random().Next(1, 5), RepaymentAmount = proposal.LoanAmount * 1.78M };
+            db.Credits.Add(credit);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Discard(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Proposal proposal = db.Proposals.Find(id);
+            if (proposal == null)
+            {
+                return HttpNotFound();
+            }
+            proposal.Status = status.Rejected;
+            return RedirectToAction("Index");
         }
 
         // POST: Proposals/Delete/5

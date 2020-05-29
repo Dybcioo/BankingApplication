@@ -1004,67 +1004,91 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function TransactionComponent_option_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const k_r5 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", k_r5.id);
+    const k_r6 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", k_r6.id);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", k_r5.kind, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", k_r6.kind, " ");
 } }
 function TransactionComponent_option_10_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const a_r6 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", a_r6.id);
+    const a_r7 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", a_r7.id);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", a_r6.accountNumber, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", a_r7.accountNumber, " ");
 } }
-function TransactionComponent_div_11_div_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Numer konta musi mie\u0107 26 cyfr ");
+function TransactionComponent_div_11_option_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const c_r9 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", c_r9.id);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", c_r9.startDate, " ");
 } }
 function TransactionComponent_div_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Numer konta ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Kredyt ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TransactionComponent_div_11_div_4_Template, 2, 0, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "select", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TransactionComponent_div_11_option_4_Template, 2, 2, "option", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r2.form.controls["toAccountNumber"].invalid && (ctx_r2.form.controls["toAccountNumber"].dirty || ctx_r2.form.controls["toAccountNumber"].touched));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r2.credit);
 } }
-function TransactionComponent_div_16_div_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Tytu\u0142 jest wymagany ");
+function TransactionComponent_div_12_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Numer konta musi mie\u0107 26 cyfr ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function TransactionComponent_div_16_Template(rf, ctx) { if (rf & 1) {
+function TransactionComponent_div_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Tytu\u0142 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Numer konta ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TransactionComponent_div_16_div_4_Template, 2, 0, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TransactionComponent_div_12_div_4_Template, 2, 0, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r3.form.controls["title"].invalid && (ctx_r3.form.controls["title"].dirty || ctx_r3.form.controls["title"].touched));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r3.form.controls["toAccountNumber"].invalid && (ctx_r3.form.controls["toAccountNumber"].dirty || ctx_r3.form.controls["toAccountNumber"].touched));
+} }
+function TransactionComponent_div_17_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Tytu\u0142 jest wymagany ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function TransactionComponent_div_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Tytu\u0142 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, TransactionComponent_div_17_div_4_Template, 2, 0, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r4.form.controls["title"].invalid && (ctx_r4.form.controls["title"].dirty || ctx_r4.form.controls["title"].touched));
+} }
+function TransactionComponent_div_18_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Opis ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "textarea", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "textarea", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class TransactionComponent {
@@ -1077,12 +1101,18 @@ class TransactionComponent {
             title: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
             amount: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
             toAccountNumber: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
-            description: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
+            description: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            creditId: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
         });
     }
     ngOnInit() {
         this.service.getAllAcounts().subscribe(data => {
             this.account = data;
+            this.form.controls['accountId'].setValue(this.account[0].id);
+        });
+        this.service.getAllCredits().subscribe(data => {
+            this.credit = data;
+            this.form.controls['creditId'].setValue(this.credit[0].id);
         });
     }
     onSubmit() {
@@ -1129,7 +1159,7 @@ class TransactionComponent {
                     this.form.get('toAccountNumber').clearValidators();
                     this.form.get('toAccountNumber').updateValueAndValidity();
                 }
-                if (this.currentId == 4) {
+                if (this.currentId != 1) {
                     this.form.get('title').clearValidators();
                     this.form.get('title').updateValueAndValidity();
                 }
@@ -1145,7 +1175,7 @@ class TransactionComponent {
     }
 }
 TransactionComponent.ɵfac = function TransactionComponent_Factory(t) { return new (t || TransactionComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_main_service__WEBPACK_IMPORTED_MODULE_3__["MainService"])); };
-TransactionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TransactionComponent, selectors: [["app-transaction"]], inputs: { kind: "kind" }, decls: 22, vars: 8, consts: [[3, "formGroup", "ngSubmit"], ["id", "kind", 1, "float-lg-left"], ["required", "", "formControlName", "operationKindId", 1, "custom-select", "custom-select-lg", "mb-3", "bg-white", 3, "input"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "accounts", 1, "float-lg-left"], ["formControlName", "accountId", 1, "custom-select", "custom-select-lg", "mb-3", "bg-white"], [4, "ngIf"], ["for", "Kwota"], ["required", "", "min", "0", "id", "amount", "type", "number", "formControlName", "amount"], ["type", "submit", 1, "button", 3, "disabled"], [3, "value"], ["for", "NrKonta"], ["minlength", "26", "maxlength", "26", "id", "toAccountNumber", "type", "text", "formControlName", "toAccountNumber"], ["class", "alert alert-danger", 4, "ngIf"], [1, "alert", "alert-danger"], ["for", "Tytu\u0142"], ["required", "", "id", "title", "type", "text", "formControlName", "title"], ["for", "Opis"], ["id", "description", "type", "text", "formControlName", "description"]], template: function TransactionComponent_Template(rf, ctx) { if (rf & 1) {
+TransactionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TransactionComponent, selectors: [["app-transaction"]], inputs: { kind: "kind" }, decls: 23, vars: 9, consts: [[3, "formGroup", "ngSubmit"], ["id", "kind", 1, "float-lg-left"], ["required", "", "formControlName", "operationKindId", 1, "custom-select", "custom-select-lg", "mb-3", "bg-white", 3, "input"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "accounts", 1, "float-lg-left"], ["formControlName", "accountId", 1, "custom-select", "custom-select-lg", "mb-3", "bg-white"], ["id", "credits", "class", "float-lg-left", 4, "ngIf"], [4, "ngIf"], ["for", "Kwota"], ["required", "", "min", "0", "id", "amount", "type", "number", "formControlName", "amount"], ["type", "submit", 1, "button", 3, "disabled"], [3, "value"], ["id", "credits", 1, "float-lg-left"], ["formControlName", "creditId", 1, "custom-select", "custom-select-lg", "mb-3", "bg-white"], ["for", "NrKonta"], ["minlength", "26", "maxlength", "26", "id", "toAccountNumber", "type", "text", "formControlName", "toAccountNumber"], ["class", "alert alert-danger", 4, "ngIf"], [1, "alert", "alert-danger"], ["for", "Tytu\u0142"], ["required", "", "id", "title", "type", "text", "formControlName", "title"], ["for", "Opis"], ["id", "description", "type", "text", "formControlName", "description"]], template: function TransactionComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function TransactionComponent_Template_form_ngSubmit_0_listener() { return ctx.onSubmit(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -1166,20 +1196,21 @@ TransactionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, TransactionComponent_div_11_Template, 5, 1, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "label", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " Kwota transakcji: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, TransactionComponent_div_12_Template, 5, 1, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, " Kwota transakcji: ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "input", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "input", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, TransactionComponent_div_16_Template, 5, 1, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, TransactionComponent_div_17_Template, 4, 0, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "button", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Wykonaj");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, TransactionComponent_div_17_Template, 5, 1, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, TransactionComponent_div_18_Template, 4, 0, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Wykonaj");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "h1");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "h1");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.form);
@@ -1188,9 +1219,11 @@ TransactionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.account);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentId == 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentId == 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentId != 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentId == 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.currentId == 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);

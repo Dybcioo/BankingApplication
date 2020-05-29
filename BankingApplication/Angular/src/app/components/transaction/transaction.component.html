@@ -16,9 +16,20 @@
     <h1>
       Konto
     </h1>
-    <select class="custom-select custom-select-lg mb-3 bg-white"  formControlName="accountId">
+    <select class="custom-select custom-select-lg mb-3 bg-white" formControlName="accountId">
       <option *ngFor="let a of account" [value]="a.id">
         {{a.accountNumber}}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf="currentId == 4" id="credits" class="float-lg-left">
+    <h1>
+      Kredyt
+    </h1>
+    <select class="custom-select custom-select-lg mb-3 bg-white" formControlName="creditId">
+      <option *ngFor="let c of credit" [value]="c.id">
+        {{c.startDate}}
       </option>
     </select>
   </div>
@@ -43,7 +54,7 @@
     <input required min="0" id="amount" type="number" formControlName="amount">
   </div>
 
-  <div *ngIf="currentId != 4">
+  <div *ngIf="currentId == 1">
     <label for="Tytuł">
       Tytuł
     </label>
