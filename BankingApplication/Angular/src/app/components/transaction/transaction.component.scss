@@ -6,3 +6,34 @@
 .glyphicon:hover {
   cursor: pointer;
 }
+
+.jumbotron {
+  z-index: 1;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+button {
+  margin: 1rem;
+}
+
+.btn {
+  background-color: var(--background-color);
+  color: #222;
+  padding: .5em 1em;
+  border: none;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  --background-color: #E3E3E3;
+  --border-size: 2px;
+  --accent-color: #0AF;
+}

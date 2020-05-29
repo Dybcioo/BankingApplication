@@ -1,4 +1,5 @@
 <body class="bg">
+  <button id="new" class="btn btn-background-slide" (click)="newAccount()">Załóż nowe konto bankowe</button>
   <div class="mx-auto" style="width: 60%;">
 
     <p class="float-sm-right" (click)="hid()" [hidden]="!isHidden">
@@ -8,8 +9,8 @@
     <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
 
     <br />
-    <button  class="btn btn-primary btn-lg" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
-    <button class="btn btn-primary btn-lg" (click)="newAccount()">Załóż nowe konto bankowe</button>
+    <button class="btn btn-background-slide" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
+    <br />
     <p *ngIf="kaczka">
       <app-transaction [kind]="kind"></app-transaction>
     </p>
@@ -33,13 +34,16 @@
       <p>{{currentAccount?.balance}} PLN</p>
     </div>
 
-    <table class="table table-dark">
+    <table class="table">
+      <thead class="thead-dark">
       <tr>
         <th>DATA</th>
         <th>RODZAJ</th>
         <th>TYTUŁ</th>
         <th>KWOTA</th>
       </tr>
+      </thead>
+      <tbody>
       <tr *ngFor="let t of transaction | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind]="kind[t.operationKindId-1]?.kind">
         <td>
           {{t.date | date: 'dd/MM/yyyy'}}
@@ -54,14 +58,15 @@
           {{t.amount | number : '1.2-2'}} PLN
         </td>
       </tr>
+      </tbody>
     </table>
     <div class="container">
       <ul class="pagination">
-      <li (click)="first()"><a href="#"><span>Pierwsza</span></a></li>
-      <li (click)="prev()"><a href="#"><span>&laquo;</span></a></li>
-      <li (click)="pagee(p+1)" *ngFor="let p of numbers"><a href="#"><span>{{p+1}}</span></a></li>
-      <li (click)="next()"><a href="#"><span>&raquo;</span></a></li>
-      <li (click)="last()"><a href="#"><span>Ostatnia</span></a></li>
+        <li (click)="first()"><a href="#"><span>Pierwsza</span></a></li>
+        <li (click)="prev()"><a href="#"><span>&laquo;</span></a></li>
+        <li (click)="pagee(p+1)" *ngFor="let p of numbers"><a href="#"><span>{{p+1}}</span></a></li>
+        <li (click)="next()"><a href="#"><span>&raquo;</span></a></li>
+        <li (click)="last()"><a href="#"><span>Ostatnia</span></a></li>
       </ul>
     </div>
     <br />
@@ -76,4 +81,4 @@
 
 
   </div>
- </body>
+</body>

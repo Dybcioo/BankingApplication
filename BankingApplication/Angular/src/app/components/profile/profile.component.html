@@ -1,7 +1,8 @@
 <div id="main">
  <h1>Mój profil</h1>
   <br />
-  <img src="/Photos/{{profile?.photo}}"  alt="" width="100px" height="150px"/>
+  <img *ngIf="profile?.photo != null" src="/Photos/{{profile?.photo}}"  alt="" width="100px" height="150px"/>
+  
   <hr />
   <br />
   <br />

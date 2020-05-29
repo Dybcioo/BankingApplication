@@ -38,9 +38,10 @@
   </tr>
 </table>
 
-<button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Złóż wniosek</button>
+<button class="btn btn-background-slide" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Złóż wniosek</button>
 
-<div class="jumbotron" *ngIf="kaczka">
+<div id="proposal" *ngIf="kaczka">
+<div class="jumbotron"  >
   <div class="float-lg-right">
     <span (click)="newTrans(false)" class="glyphicon glyphicon-remove"></span>
   </div>
@@ -106,4 +107,5 @@
     <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Wykonaj</button>
 
   </form>
+</div>
 </div>

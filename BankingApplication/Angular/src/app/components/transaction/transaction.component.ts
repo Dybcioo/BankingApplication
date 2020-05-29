@@ -82,6 +82,7 @@ export class TransactionComponent implements OnInit {
       this.service.addTransaction(this.transaction).subscribe(data => {
         console.log(data);
       });
+      this.exit(false);
     }
   }
 
