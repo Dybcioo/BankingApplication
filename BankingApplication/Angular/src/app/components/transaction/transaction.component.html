@@ -1,78 +1,87 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="jumbotron">
+  <div class="float-lg-right">
+    <span (click)="exit(false)" class="glyphicon glyphicon-remove"></span>
+  </div>
+  <h2 class="d-flex justify-content-center">Transakcja</h2>
 
-  <div id="kind" class="float-lg-left">
-    <h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label>
       Rodzaj transakcji
-    </h1>
-    <select required class="custom-select custom-select-lg mb-3 bg-white" formControlName="operationKindId" (input)="check($event)">
-      <option *ngFor="let k of kind" [value]="k.id">
-        {{k.kind}}
-      </option>
-    </select>
+    </label>
+    <div id="kind" class="form-group row">
+      <div class="col-xs-2">
+        <select required class="form-control" formControlName="operationKindId" (input)="check($event)">
+          <option *ngFor="let k of kind" [value]="k.id">
+            {{k.kind}}
+          </option>
+        </select>
+      </div>
+    </div>
 
-  </div>
-
-  <div id="accounts" class="float-lg-left">
-    <h1>
+    <label>
       Konto
-    </h1>
-    <select class="custom-select custom-select-lg mb-3 bg-white" formControlName="accountId">
-      <option *ngFor="let a of account" [value]="a.id">
-        {{a.accountNumber}}
-      </option>
-    </select>
-  </div>
+    </label>
+    <div id="accounts" class="form-group row">
+      <div class="col-xs-3">
+        <select class="form-control" formControlName="accountId">
+          <option *ngFor="let a of account" [value]="a.id">
+            {{a.accountNumber}}
+          </option>
+        </select>
+      </div>
+    </div>
 
-  <div *ngIf="currentId == 4" id="credits" class="float-lg-left">
-    <h1>
+    <label *ngIf="currentId == 4">
       Kredyt
-    </h1>
-    <select class="custom-select custom-select-lg mb-3 bg-white" formControlName="creditId">
-      <option *ngFor="let c of credit" [value]="c.id">
-        {{c.startDate}}
-      </option>
-    </select>
-  </div>
-
-  <div *ngIf="currentId == 1">
-    <label for="NrKonta">
-      Numer konta
     </label>
-    <input minlength="26" maxlength="26" id="toAccountNumber" type="text" formControlName="toAccountNumber">
-    <div *ngIf="form.controls['toAccountNumber'].invalid && (form.controls['toAccountNumber'].dirty || form.controls['toAccountNumber'].touched) "
-         class="alert alert-danger">
-      Numer konta musi mieć 26 cyfr
+    <div *ngIf="currentId == 4" id="credits" class="form-group row">
+      <div class="col-xs-3">
+        <select class="form-control" formControlName="creditId">
+          <option *ngFor="let c of credit" [value]="c.id">
+            {{c.startDate | date: 'dd/MM/yyyy HH:mm' }}
+          </option>
+        </select>
+      </div>
     </div>
-  </div>
 
+    <div *ngIf="currentId == 1" class="form-group row">
+      <div class="col-xs-3">
+        <input class="form-control" minlength="26" maxlength="26" id="toAccountNumber" type="text" formControlName="toAccountNumber" placeholder="Numer konta" (input)="onSearchChange($event.target.value)">
+        <div class="text-danger" *ngIf="form.controls['toAccountNumber'].invalid && (form.controls['toAccountNumber'].dirty || form.controls['toAccountNumber'].touched) ">
+          Numer konta musi mieć 26 cyfr
+        </div>
 
-
-  <div>
-    <label for="Kwota">
-      Kwota transakcji:
-    </label>
-    <input required min="0" id="amount" type="number" formControlName="amount">
-  </div>
-
-  <div *ngIf="currentId == 1">
-    <label for="Tytuł">
-      Tytuł
-    </label>
-    <input required id="title" type="text" formControlName="title">
-    <div *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched) "
-         class="alert alert-danger">
-      Tytuł jest wymagany
+      </div>
     </div>
-  </div>
+    <div *ngIf="bank != null">
+      <p>Bank: {{bank?.nazwa_banku}}<br /> Adres:  {{bank?.adres_banku}}</p>
+    </div>
 
-  <div *ngIf="currentId == 1">
-    <label for="Opis">
-      Opis
-    </label>
-    <textarea id="description" type="text" formControlName="description"></textarea>
-  </div>
 
-  <button class="button" type="submit" [disabled]="!form.valid">Wykonaj</button>
+    <div class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" required min="0" id="amount" type="number" formControlName="amount" placeholder="Kwota trasakcji">
+      </div>
+    </div>
 
-</form>
-<h1>{{error}}</h1>
+    <div *ngIf="currentId == 1" class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" required id="title" type="text" formControlName="title" placeholder="Tytuł">
+        <div class="text-danger" *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched) ">
+          Tytuł jest wymagany
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentId == 1" class="form-group row">
+      <div class="col-xs-2">
+        <textarea class="form-control" placeholder="Opis" id="description" type="text" formControlName="description"></textarea>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="exit(false)" type="submit" [disabled]="!form.valid">Wykonaj</button>
+
+  </form>
+  <h1>{{error}}</h1>
+</div>

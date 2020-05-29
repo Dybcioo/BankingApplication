@@ -5,6 +5,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Account from '../../models/Account';
 import { MainService } from '../../services/main.service';
 import Credit from '../../models/Credit';
+import Bank from '../../models/bank';
+import { AccountComponent } from '../account/account.component';
 
 @Component({
   selector: 'app-transaction',
@@ -14,6 +16,7 @@ import Credit from '../../models/Credit';
 export class TransactionComponent implements OnInit {
   transaction: Transaction = new Transaction();
   credit: Array<Credit>;
+  bank: Bank;
 
   form = new FormGroup({
     accountId: new FormControl(''),
@@ -28,13 +31,14 @@ export class TransactionComponent implements OnInit {
   @Input()
   kind: Array<Kind>;
 
+
   account: Array<Account>;
   currentKind: Kind;
   currentId: number;
   error: string;
 
  
-  constructor(private service: MainService) {}
+  constructor(private service: MainService, private acc: AccountComponent) {}
 
 
   ngOnInit(): void {
@@ -46,6 +50,9 @@ export class TransactionComponent implements OnInit {
       this.credit = data;
       this.form.controls['creditId'].setValue(this.credit[0].id);
     });
+    this.form.controls['operationKindId'].setValue(this.kind[0].id);
+    this.currentId = 1;
+    
   }
 
 
@@ -107,5 +114,18 @@ export class TransactionComponent implements OnInit {
     }
   }
 
+  onSearchChange(searchValue: string): void {
+    if (searchValue.length > 25) {
+      this.service.getBank(searchValue).subscribe(data => {
+        this.bank = data;
+      })
+    } else {
+      this.bank = null;
+    }
+  }
+
+  exit(arg: boolean) {
+    this.acc.newTrans(arg);
+  }
 
 }

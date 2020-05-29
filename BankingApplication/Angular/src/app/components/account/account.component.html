@@ -1,12 +1,15 @@
 <body class="bg">
   <div class="mx-auto" style="width: 60%;">
 
-    <button class="float-lg-right" (click)="hid()" [hidden]="!isHidden">Pokaz mi</button>
+    <p class="float-sm-right" (click)="hid()" [hidden]="!isHidden">
+      <span class="glyphicon glyphicon-user">Profil</span>
+    </p>
+
     <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
 
-    <button *ngIf="kaczka" type="button" (click)="newTrans(false)">Jednak nie</button>
-    <button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
-    <button (click)="newAccount()">Załóż nowe konto bankowe</button>
+    <br />
+    <button  class="btn btn-primary btn-lg" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
+    <button class="btn btn-primary btn-lg" (click)="newAccount()">Załóż nowe konto bankowe</button>
     <p *ngIf="kaczka">
       <app-transaction [kind]="kind"></app-transaction>
     </p>
@@ -14,11 +17,11 @@
     <br />
     <br />
     <br />
-    <div id="accounts" class="float-lg-left">
+    <div id="accounts" class="container">
       <h1>
         Konto
       </h1>
-      <select class="custom-select custom-select-lg mb-3 bg-white" name="account" [(ngModel)]="currentId" (input)="check($event)">
+      <select class="btn btn-primary dropdown-toggle btn-lg" name="account" [(ngModel)]="currentId" (input)="check($event)">
         <option *ngFor="let a of account" [value]="a.id">
           {{a.accountNumber}}
         </option>
@@ -52,13 +55,15 @@
         </td>
       </tr>
     </table>
-
-    <button (click)="first()">Pierwsza</button>
-    <button (click)="prev()">Poprzednia</button>
-    <button (click)="pagee(p+1)" *ngFor="let p of numbers">{{p+1}}</button>
-    <button (click)="next()">Następna</button>
-    <button (click)="last()">Ostatnia</button>
-
+    <div class="container">
+      <ul class="pagination">
+      <li (click)="first()"><a href="#"><span>Pierwsza</span></a></li>
+      <li (click)="prev()"><a href="#"><span>&laquo;</span></a></li>
+      <li (click)="pagee(p+1)" *ngFor="let p of numbers"><a href="#"><span>{{p+1}}</span></a></li>
+      <li (click)="next()"><a href="#"><span>&raquo;</span></a></li>
+      <li (click)="last()"><a href="#"><span>Ostatnia</span></a></li>
+      </ul>
+    </div>
     <br />
     <br />
     <br />

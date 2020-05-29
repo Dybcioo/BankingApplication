@@ -38,71 +38,72 @@
   </tr>
 </table>
 
-<button *ngIf="kaczka" type="button" (click)="newTrans(false)">W sumie stary samochód jest ok</button>
 <button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Złóż wniosek</button>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="kaczka">
+<div class="jumbotron" *ngIf="kaczka">
+  <div class="float-lg-right">
+    <span (click)="newTrans(false)" class="glyphicon glyphicon-remove"></span>
+  </div>
+  <h2 class="d-flex justify-content-center">Wniosek o kredyt</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-
-  <div id="accounts" class="float-lg-left">
-    <h1>
+    <label>
       Konto
-    </h1>
-    <select class="custom-select custom-select-lg mb-3 bg-white" formControlName="accountId">
-      <option *ngFor="let a of account" [value]="a.id">
-        {{a.accountNumber}}
-      </option>
-    </select>
-  </div>
-
-  <div>
-    <label for="imieOjca">
-      Imie Ojca:
     </label>
-    <input required id="fatherName" type="text" formControlName="fatherName">
-    <div *ngIf="form.controls['fatherName'].invalid && (form.controls['fatherName'].dirty || form.controls['fatherName'].touched) "
-         class="alert alert-danger">
-      Imie Ojca jest wymagane
+    <div id="accounts" class="form-group row">
+      <div class="col-xs-3">
+        <select class="form-control" formControlName="accountId">
+          <option *ngFor="let a of account" [value]="a.id">
+            {{a.accountNumber}}
+          </option>
+        </select>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="imieMatki">
-      Imie Matki:
-    </label>
-    <input required id="motherName" type="text" formControlName="motherName">
-    <div *ngIf="form.controls['motherName'].invalid && (form.controls['motherName'].dirty || form.controls['motherName'].touched) "
-         class="alert alert-danger">
-      Imie Matki jest wymagane
+    <div class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" placeholder="Imie Ojca" id="fatherName" type="text" formControlName="fatherName">
+        <div *ngIf="form.controls['fatherName'].invalid && (form.controls['fatherName'].dirty || form.controls['fatherName'].touched) "
+             class="text-danger">
+          Imie Ojca jest wymagane
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="NazwiskoPanieńskieMatki">
-      Nazwisko Panieńskie Matki:
-    </label>
-    <input required id="motherMaidenName" type="text" formControlName="motherMaidenName">
-    <div *ngIf="form.controls['motherMaidenName'].invalid && (form.controls['motherMaidenName'].dirty || form.controls['motherMaidenName'].touched) "
-         class="alert alert-danger">
-      Nazwisko Panieńskie Matki jest wymagane
+    <div class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" placeholder="Imie Matki" required id="motherName" type="text" formControlName="motherName">
+        <div *ngIf="form.controls['motherName'].invalid && (form.controls['motherName'].dirty || form.controls['motherName'].touched) "
+             class="text-danger">
+          Imie Matki jest wymagane
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="Dochód">
-      Dochód:
-    </label>
-    <input required min="0" id="income" type="number" formControlName="income">
-  </div>
+    <div class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" placeholder="Nazwisko Panieńskie Matki" required id="motherMaidenName" type="text" formControlName="motherMaidenName">
+        <div *ngIf="form.controls['motherMaidenName'].invalid && (form.controls['motherMaidenName'].dirty || form.controls['motherMaidenName'].touched) "
+             class="text-danger">
+          Nazwisko Panieńskie Matki jest wymagane
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <label for="Kwota kredytu">
-      Kwota kredytu:
-    </label>
-    <input required min="0" id="loanAmount" type="number" formControlName="loanAmount">
-  </div>
+    <div class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" placeholder="Dochód" required min="0" id="income" type="number" formControlName="income">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-2">
+        <input class="form-control" placeholder="Kwota kredytu" required min="0" id="loanAmount" type="number" formControlName="loanAmount">
+      </div>
+    </div>
 
 
-  <button class="button" type="submit" [disabled]="!form.valid">Wykonaj</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Wykonaj</button>
 
-</form>
+  </form>
+</div>

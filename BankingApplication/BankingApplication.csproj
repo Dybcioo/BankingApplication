@@ -532,6 +532,7 @@
     <TypeScriptCompile Include="Angular\src\app\components\transaction\transaction.component.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Account.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Address.ts" />
+    <TypeScriptCompile Include="Angular\src\app\models\Bank.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Credit.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Kind.ts" />
     <TypeScriptCompile Include="Angular\src\app\models\Profile.ts" />

@@ -9,6 +9,7 @@ import Credit from '../models/Credit';
 import Proposal from '../models/Proposal';
 import Profile from '../models/Profile';
 import Address from '../models/Address';
+import Bank from '../models/bank';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class MainService {
   public PROPOSAL_ENDPOINT = `${this.API}/Proposals`;
   public PROFILE_ENDPOINT = `${this.API}/Profiles`;
   public ADDRESS_ENDPOINT = `${this.API}/Addresses`;
+  public BANK_ENDPOINT = `https://jakitobank.pl/api/?numer=`;
 
   constructor(private http: HttpClient) { }
 
@@ -54,5 +56,8 @@ export class MainService {
   }
   addAcount(acc: Account): Observable<Account> {
     return this.http.post<Account>(this.ACCOUNT_ENDPOINT, acc);
+  }
+  getBank(num: string): Observable<Bank> {
+    return this.http.get<Bank>(this.BANK_ENDPOINT + num);
   }
 }
