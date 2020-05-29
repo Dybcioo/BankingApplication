@@ -6,7 +6,7 @@
 
     <button *ngIf="kaczka" type="button" (click)="newTrans(false)">Jednak nie</button>
     <button *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
-
+    <button (click)="newAccount()">Załóż nowe konto bankowe</button>
     <p *ngIf="kaczka">
       <app-transaction [kind]="kind"></app-transaction>
     </p>

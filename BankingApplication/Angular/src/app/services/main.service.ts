@@ -52,4 +52,7 @@ export class MainService {
   getAddress(): Observable<Address> {
     return this.http.get<Address>(this.ADDRESS_ENDPOINT);
   }
+  addAcount(acc: Account): Observable<Account> {
+    return this.http.post<Account>(this.ACCOUNT_ENDPOINT, acc);
+  }
 }

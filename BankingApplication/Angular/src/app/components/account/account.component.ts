@@ -92,4 +92,10 @@ export class AccountComponent implements OnInit {
   pagee(p:number) {
     this.page = p;
   }
+
+  newAccount() {
+    this.service.addAcount(new Account()).subscribe(data => {
+      console.log(data);
+    })
+  }
 }

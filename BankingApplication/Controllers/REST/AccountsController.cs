@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BankingApplication.DAL;
@@ -81,11 +82,34 @@ namespace BankingApplication.Controllers.REST
             {
                 return BadRequest(ModelState);
             }
-
+            account.Balance = 0;
+            account.CreationDate = DateTime.Now;
+            account.ProfileId = db.Profiles.Single(p => p.Username == User.Identity.Name).Id;
+            account.AccountNumber = NewAccount();
             db.Accounts.Add(account);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = account.Id }, account);
+        }
+
+        private string NewAccount()
+        {
+            StringBuilder acc = new StringBuilder();
+            acc.Append("232490000500004000");
+            var temp = new StringBuilder();
+
+            do
+            {
+                temp.Clear();
+                temp.Append(acc.ToString());
+
+                Random r = new Random();
+                for (int i = 0; i < 8; i++)
+                {
+                    temp.Append(r.Next(9));
+                }
+            } while (db.Accounts.AsEnumerable().Any(a => a.AccountNumber.Equals(temp.ToString())));
+            return temp.ToString();
         }
 
         // DELETE: api/Accounts/5
