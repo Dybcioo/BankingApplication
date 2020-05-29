@@ -33,6 +33,7 @@ export class ProposalComponent implements OnInit {
     });
     this.serv.getAllAcounts().subscribe(data => {
       this.account = data;
+      this.form.controls['accountId'].setValue(this.account[0].id);
     });
   }
   getAccount(id: number): string {
