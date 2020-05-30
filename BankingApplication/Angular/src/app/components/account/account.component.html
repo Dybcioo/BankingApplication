@@ -1,12 +1,14 @@
 <body class="bg">
   <button id="new" class="btn btn-background-slide" (click)="newAccount()">Załóż nowe konto bankowe</button>
+  <p id="prof" (click)="hid()" [hidden]="!isHidden">
+    <span class="glyphicon glyphicon-user">Profil</span>
+  </p>
+  <button class="btn btn-background-slide"><a href="Account/LogOff">Wyloguj się!</a></button>
   <div class="mx-auto" style="width: 60%;">
 
-    <p class="float-sm-right" (click)="hid()" [hidden]="!isHidden">
-      <span class="glyphicon glyphicon-user">Profil</span>
-    </p>
-
-    <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
+    <div id="profile" [hidden]="isHidden">
+      <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
+    </div>
 
     <br />
     <button class="btn btn-background-slide" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
@@ -22,7 +24,7 @@
       <h1>
         Konto
       </h1>
-      <select class="btn btn-primary dropdown-toggle btn-lg" name="account" [(ngModel)]="currentId" (input)="check($event)">
+      <select class=" dropdown-toggle btn-lg" name="account" [(ngModel)]="currentId" (input)="check($event)">
         <option *ngFor="let a of account" [value]="a.id">
           {{a.accountNumber}}
         </option>
@@ -31,33 +33,33 @@
 
     <div id="balance" class="float-lg-right">
       Dostępne środki:<br />
-      <p>{{currentAccount?.balance}} PLN</p>
+      <h2>{{currentAccount?.balance | number : '1.2-2'}} PLN</h2>
     </div>
 
     <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th>DATA</th>
-        <th>RODZAJ</th>
-        <th>TYTUŁ</th>
-        <th>KWOTA</th>
-      </tr>
+      <thead class="thead">
+        <tr>
+          <th>DATA</th>
+          <th>RODZAJ</th>
+          <th>TYTUŁ</th>
+          <th>KWOTA</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let t of transaction | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind]="kind[t.operationKindId-1]?.kind">
-        <td>
-          {{t.date | date: 'dd/MM/yyyy'}}
-        </td>
-        <td>
-          {{kind[t.operationKindId-1]?.kind}}
-        </td>
-        <td>
-          {{t.title}}
-        </td>
-        <td [ngStyle]="{color: getColor(t.direction)}">
-          {{t.amount | number : '1.2-2'}} PLN
-        </td>
-      </tr>
+        <tr *ngFor="let t of transaction | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind]="kind[t.operationKindId-1]?.kind">
+          <td>
+            {{t.date | date: 'dd/MM/yyyy'}}
+          </td>
+          <td>
+            {{kind[t.operationKindId-1]?.kind}}
+          </td>
+          <td>
+            {{t.title}}
+          </td>
+          <td [ngStyle]="{color: getColor(t.direction)}">
+            {{t.amount | number : '1.2-2'}} PLN
+          </td>
+        </tr>
       </tbody>
     </table>
     <div class="container">
@@ -78,7 +80,16 @@
     <br />
     <app-proposal>brak</app-proposal>
     <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 
   </div>
+  <footer class="card-footer">
+    Projekt z PZ 2020 <br />
+    Dybowski Dominik
+  </footer>
 </body>

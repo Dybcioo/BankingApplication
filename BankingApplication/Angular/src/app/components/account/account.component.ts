@@ -61,7 +61,7 @@ export class AccountComponent implements OnInit {
   }
 
   getColor(direction: number): string {
-    return direction == 0 ? "red" : "green";
+    return direction == 0 ? "#9C2542" : "#319177";
   }
   newTrans(arg: boolean): void {
     this.kaczka = arg;

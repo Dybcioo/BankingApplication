@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace BankingApplication.Controllers.Angular
 {
+    [Authorize]
     public class HomeAngularController : Controller
     {
         // GET: Home

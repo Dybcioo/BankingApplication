@@ -103,3 +103,11 @@ button {
   height: 100%;
   background-color: rgb(255, 255, 255, 0.5);
 }
+tbody {
+  font-weight: bold;
+}
+
+.thead {
+  background: rgb(11,181,226);
+  background: linear-gradient(90deg, rgba(11,181,226,1) 0%, rgba(9,148,198,1) 50%, rgba(7,135,172,1) 100%);
+}

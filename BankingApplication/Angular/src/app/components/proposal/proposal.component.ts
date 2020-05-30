@@ -55,11 +55,11 @@ export class ProposalComponent implements OnInit {
   }
   getColor(id: number): string {
     if (id == 0) {
-      return 'yellow';
+      return '#C46210';
     } else if (id == 1) {
-      return 'green';
+      return '#319177';
     } else {
-      return 'red';
+      return '#9C2542';
     }
   }
 
