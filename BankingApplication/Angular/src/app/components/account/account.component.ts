@@ -6,6 +6,8 @@ import { MainService } from '../../services/main.service';
 import { FormsModule } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 import Kind from '../../models/Kind';
+import { ProfileComponent } from '../profile/profile.component';
+import Profile from '../../models/Profile';
 
 @Component({
   selector: 'app-account',
@@ -17,11 +19,14 @@ export class AccountComponent implements OnInit {
   account: Array<Account>;
   transaction: Array<Transaction>;
   public kind: Array<Kind>;
+  profile: Profile;
   currentId: number;
   currentAccount: Account;
   current: string;
   kaczka: boolean = false;
   isHidden: boolean = true;
+  lim: number;
+  showEditLimit: boolean = false;
 
   pageSize: number = 5;
   page: number = 1;
@@ -45,6 +50,9 @@ export class AccountComponent implements OnInit {
     })
     this.service.getAllKinds().subscribe(data => {
       this.kind = data;
+    })
+    this.service.getProfile().subscribe(data => {
+      this.profile = data;
     })
   }
 
@@ -97,5 +105,16 @@ export class AccountComponent implements OnInit {
     this.service.addAcount(new Account()).subscribe(data => {
       console.log(data);
     })
+  }
+  
+  changeLimit() {
+    this.profile.limit = this.lim;
+    this.service.updateProfile(this.profile).subscribe(data => {
+      console.log(data);
+    })
+    this.showLimitEdit(false);
+  }
+  showLimitEdit(arg: boolean) {
+    this.showEditLimit = arg;
   }
 }

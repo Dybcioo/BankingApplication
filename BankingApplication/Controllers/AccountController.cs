@@ -14,7 +14,7 @@ using System.Net.Mail;
 
 namespace BankingApplication.Controllers
 {
-    [Authorize]
+    
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

@@ -7,6 +7,7 @@ import { MainService } from '../../services/main.service';
 import Credit from '../../models/Credit';
 import Bank from '../../models/bank';
 import { AccountComponent } from '../account/account.component';
+import Profile from '../../models/Profile';
 
 @Component({
   selector: 'app-transaction',
@@ -17,6 +18,7 @@ export class TransactionComponent implements OnInit {
   transaction: Transaction = new Transaction();
   credit: Array<Credit>;
   bank: Bank;
+  profile: Profile;
 
   form = new FormGroup({
     accountId: new FormControl(''),
@@ -52,7 +54,9 @@ export class TransactionComponent implements OnInit {
     });
     this.form.controls['operationKindId'].setValue(this.kind[0].id);
     this.currentId = 1;
-    
+    this.service.getProfile().subscribe(data => {
+      this.profile = data;
+    });
   }
 
 
@@ -74,7 +78,9 @@ export class TransactionComponent implements OnInit {
       this.transaction.toAccountNumber = '';
       this.transaction.title = "Spłata kredytu";
     }
-    if (this.transaction.amount >= this.getAccount(this.transaction.accountId).balance && this.currentId != 2) {
+    if (this.transaction.amount > (this.profile.limit - this.profile.currentLimit)) {
+      this.error = 'Kwota transakcji przekracza dzienny limit transakcji!';
+    }else if (this.transaction.amount > this.getAccount(this.transaction.accountId).balance) {
       this.error = 'Kwota transakcji przekracza środki na podanym koncie!';
     } else {
       this.form.reset();

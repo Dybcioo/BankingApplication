@@ -72,6 +72,8 @@ namespace BankingApplication.Controllers.REST
         [ResponseType(typeof(Transaction))]
         public IHttpActionResult PostTransaction(Transaction transaction)
         {
+            Profile profile = db.Profiles.Single(p => p.Username == User.Identity.Name);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -80,6 +82,7 @@ namespace BankingApplication.Controllers.REST
             if (transaction.Direction == direction.Outbound)
             {
                 db.Accounts.Find(transaction.AccountId).Balance -= transaction.Amount;
+                profile.CurrentLimit += transaction.Amount;
             }
             else
             {

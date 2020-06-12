@@ -6,4 +6,6 @@ export default class Profile {
   born: Date;
   active: boolean;
   photo: string;
+  limit: number;
+  currentLimit: number;
 }

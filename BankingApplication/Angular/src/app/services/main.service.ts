@@ -60,4 +60,7 @@ export class MainService {
   getBank(num: string): Observable<Bank> {
     return this.http.get<Bank>(this.BANK_ENDPOINT + num);
   }
+  updateProfile(limit: Profile): Observable<Profile> {
+    return this.http.put<Profile>(this.PROFILE_ENDPOINT+"/"+limit.id, limit);
+  }
 }

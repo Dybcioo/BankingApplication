@@ -36,8 +36,8 @@ namespace BankingApplication.DAL
 
             var profiles = new List<Profile>
             {
-                new Profile {Name = "Jan", Surname = "Kowalski", Active = true, Born = new DateTime(1990,1,1), Username = user.UserName},
-                new Profile {Name = "Franek", Surname = "Kimono", Active = true, Born = new DateTime(1992,1,1), Username = user2.UserName}
+                new Profile {Name = "Jan", Surname = "Kowalski", Active = true, Born = new DateTime(1990,1,1), Username = user.UserName, Hour = DateTime.Now.Hour, Day = DateTime.Now.Day},
+                new Profile {Name = "Franek", Surname = "Kimono", Active = true, Born = new DateTime(1992,1,1), Username = user2.UserName, Hour = DateTime.Now.Hour, Day = DateTime.Now.Day}
             };
             profiles.ForEach(p => context.Profiles.Add(p));
             context.SaveChanges();

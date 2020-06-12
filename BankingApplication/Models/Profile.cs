@@ -31,7 +31,10 @@ namespace BankingApplication.Models
 
         [Display(Name = "Aktywny")]
         public bool Active { get; set; }
-
+        public decimal Limit { get; set; } = 3000M;
+        public decimal CurrentLimit { get; set; }
+        public int Hour { get; set; }
+        public int Day { get; set; }
         public string Photo { get; set; }
 
 

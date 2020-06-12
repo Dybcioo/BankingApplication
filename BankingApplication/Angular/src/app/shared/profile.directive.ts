@@ -11,9 +11,6 @@ export class ProfileDirective {
   constructor(private el: ElementRef, private render: Renderer2) { }
   numberOfClicks: number = 0;
 
-  @HostListener('click', ['$event.target'])
-  onClick(btn) {
-    
-  }
+  
 
 }
