@@ -31,6 +31,8 @@
       </select>
     </div>
 
+
+
     <div id="balance" class="float-lg-right">
       Dostępne środki:<br />
       <h2>{{currentAccount?.balance | number : '1.2-2'}} PLN</h2>
@@ -38,9 +40,18 @@
       <h2>{{profile.limit - profile.currentLimit | number : '1.2-2'}} PLN</h2>
       <button class="btn btn-background-slide" *ngIf="!showEditLimit" (click)="showLimitEdit(true)">Zmień limit</button>
       <div *ngIf="showEditLimit">
-        <input  [(ngModel)]="lim" placeholder="Limit" type="number">
-        <button class="btn btn-background-slide" (click)="changeLimit()" >Zmień</button>
+        <input [(ngModel)]="lim" placeholder="Limit" type="number">
+        <button class="btn btn-background-slide" (click)="changeLimit()">Zmień</button>
       </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+     <h4>Szukaj po tytule:</h4>
+      <input type="text" placeholder="Tytuł" [(ngModel)]="title" (input)="search() " />
     </div>
 
     <table class="table">

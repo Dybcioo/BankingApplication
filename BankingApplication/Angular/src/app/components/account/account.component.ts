@@ -27,6 +27,7 @@ export class AccountComponent implements OnInit {
   isHidden: boolean = true;
   lim: number;
   showEditLimit: boolean = false;
+  title: string;
 
   pageSize: number = 5;
   page: number = 1;
@@ -116,5 +117,17 @@ export class AccountComponent implements OnInit {
   }
   showLimitEdit(arg: boolean) {
     this.showEditLimit = arg;
+  }
+  search() {
+    if (this.title != "") {
+      this.transaction = this.transaction.filter(res => {
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
+      })
+      this.maxPage = Math.ceil(this.transaction.length / this.pageSize);
+      this.numbers = Array(this.maxPage).fill(1).map((x, i) => i);
+    } else if (this.title == "") {
+      this.ngOnInit();
+    }
+    
   }
 }
