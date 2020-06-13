@@ -1,5 +1,5 @@
 body, html {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-image: url("~/Logo/background2.jpg");
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   background-position: center;
@@ -157,5 +157,6 @@ tbody {
   right:200px;
   bottom: 0%;
   top: 5%;
+  height: 40px;
 }
 

@@ -1,5 +1,8 @@
 <body class="bg">
-  <button id="new" class="btn btn-background-slide" (click)="newAccount()">Załóż nowe konto bankowe</button>
+  <div  class="card-header">
+    <button id="new" class="btn btn-background-slide" (click)="newAccount()">Załóż nowe konto bankowe</button>
+    <img src="/Logo/logo.png" height="100px" width="400px"/>
+  </div>
   <p id="prof" (click)="hid()" [hidden]="!isHidden">
     <span class="glyphicon glyphicon-user">Profil</span>
   </p>
@@ -49,73 +52,86 @@
     <br />
     <br />
     <br />
-    <div>
-      <h4>Szukaj po tytule:</h4>
-      <input type="text" placeholder="Tytuł" [(ngModel)]="title" (input)="search() " />
-      <h4>Szukaj po numerze konta:</h4>
-      <input type="text" placeholder="Numer konta" [(ngModel)]="accNumber" (input)="search2() " />
-    </div>
-    <div id="accounts" class="container">
-      <h4>
-       Sortuj:
-      </h4>
-      <select class=" dropdown-toggle btn-lg" name="sort" [(ngModel)]="sort" (input)="onSort()">
-        <option *ngFor="let s of sortArr" [value]="s">
-          {{s}}
-        </option>
-      </select>
-    </div>
-    <br />
-
     <table class="table">
-      <thead class="thead">
-        <tr>
-          <th>DATA</th>
-          <th>RODZAJ</th>
-          <th>TYTUŁ</th>
-          <th>KWOTA</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let t of transaction | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind]="kind[t.operationKindId-1]?.kind">
-          <td>
-            {{t.date | date: 'dd/MM/yyyy'}}
-          </td>
-          <td>
-            {{kind[t.operationKindId-1]?.kind}}
-          </td>
-          <td>
-            {{t.title}}
-          </td>
-          <td [ngStyle]="{color: getColor(t.direction)}">
-            {{t.amount | number : '1.2-2'}} PLN
-          </td>
-        </tr>
-      </tbody>
+      <tr>
+        <th>
+          <h4>Szukaj po tytule:</h4>
+        </th>
+        <th>
+          <h4>Szukaj po numerze konta:</h4>
+        </th>
+        <th>
+          <h4>Sortuj: </h4>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" placeholder="Tytuł" [(ngModel)]="title" (input)="search() " />
+        </td>
+        <td>
+          <input type="text" placeholder="Numer konta" [(ngModel)]="accNumber" (input)="search2() " />
+        </td>
+        <td>
+          <select class=" dropdown-toggle btn-lg" name="sort" [(ngModel)]="sort" (input)="onSort()">
+            <option *ngFor="let s of sortArr" [value]="s">
+              {{s}}
+            </option>
+          </select>
+        </td>
+      </tr>
     </table>
-    <div class="container">
-      <ul class="pagination">
-        <li (click)="first()"><a href="#"><span>Pierwsza</span></a></li>
-        <li (click)="prev()"><a href="#"><span>&laquo;</span></a></li>
-        <li (click)="pagee(p+1)" *ngFor="let p of numbers"><a href="#"><span>{{p+1}}</span></a></li>
-        <li (click)="next()"><a href="#"><span>&raquo;</span></a></li>
-        <li (click)="last()"><a href="#"><span>Ostatnia</span></a></li>
-      </ul>
-    </div>
-    <br />
-    <br />
-    <br />
-    <app-credit>brak</app-credit>
-    <br />
-    <br />
-    <br />
-    <app-proposal>brak</app-proposal>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+        
+      <br />
+
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th>DATA</th>
+            <th>RODZAJ</th>
+            <th>TYTUŁ</th>
+            <th>KWOTA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of transaction | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" appShow [transaction]="t" [id]="currentAccount.accountNumber" [kind]="kind[t.operationKindId-1]?.kind">
+            <td>
+              {{t.date | date: 'dd/MM/yyyy'}}
+            </td>
+            <td>
+              {{kind[t.operationKindId-1]?.kind}}
+            </td>
+            <td>
+              {{t.title}}
+            </td>
+            <td [ngStyle]="{color: getColor(t.direction)}">
+              {{t.amount | number : '1.2-2'}} PLN
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="container">
+        <ul class="pagination">
+          <li (click)="first()"><a href="#"><span>Pierwsza</span></a></li>
+          <li (click)="prev()"><a href="#"><span>&laquo;</span></a></li>
+          <li (click)="pagee(p+1)" *ngFor="let p of numbers"><a href="#"><span>{{p+1}}</span></a></li>
+          <li (click)="next()"><a href="#"><span>&raquo;</span></a></li>
+          <li (click)="last()"><a href="#"><span>Ostatnia</span></a></li>
+        </ul>
+      </div>
+      <br />
+      <br />
+      <br />
+      <app-credit>brak</app-credit>
+      <br />
+      <br />
+      <br />
+      <app-proposal>brak</app-proposal>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
 
   </div>
