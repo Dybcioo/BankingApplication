@@ -1,4 +1,4 @@
-body, html {
+body, html, header {
   background-image: url("~/Logo/background2.jpg");
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -8,6 +8,13 @@ body, html {
   background-attachment: fixed;
   width: 100%;
   font-family: 'Roboto';
+}
+
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #4285F4;
+  }
 }
 a{
     text-decoration: none;
@@ -51,7 +58,7 @@ a{
   position: fixed;
   left: 50px;
   bottom: 0%;
-  top: 5%;
+  top: 15%;
   height:30px;
 }
 

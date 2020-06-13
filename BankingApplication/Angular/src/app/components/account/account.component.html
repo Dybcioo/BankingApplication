@@ -1,86 +1,89 @@
-<body class="bg">
-  <div  class="card-header">
+
+  <body class="bg">
+    <div class="card-header">
+
+      <img src="/Logo/logo.png" height="100px" width="400px" />
+      <button class="btn btn-background-slide"><a href="Account/LogOff">Wyloguj się!</a></button>
+    </div>
     <button id="new" class="btn btn-background-slide" (click)="newAccount()">Załóż nowe konto bankowe</button>
-    <img src="/Logo/logo.png" height="100px" width="400px"/>
-  </div>
-  <p id="prof" (click)="hid()" [hidden]="!isHidden">
-    <span class="glyphicon glyphicon-user">Profil</span>
-  </p>
-  <button class="btn btn-background-slide"><a href="Account/LogOff">Wyloguj się!</a></button>
-  <div class="mx-auto" style="width: 60%;">
-
-    <div id="profile" [hidden]="isHidden">
-      <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
-    </div>
-
-    <br />
-    <button class="btn btn-background-slide" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
-    <br />
-    <p *ngIf="kaczka">
-      <app-transaction [kind]="kind"></app-transaction>
+    <p id="prof" (click)="hid()" [hidden]="!isHidden">
+      <span class="glyphicon glyphicon-user">Profil</span>
     </p>
+    
+    <div class="mx-auto" style="width: 60%;">
 
-    <br />
-    <br />
-    <br />
-    <div id="accounts" class="container">
-      <h1>
-        Konto
-      </h1>
-      <select class=" dropdown-toggle btn-lg" name="account" [(ngModel)]="currentId" (input)="check($event)">
-        <option *ngFor="let a of account" [value]="a.id">
-          {{a.accountNumber}}
-        </option>
-      </select>
-    </div>
-
-
-
-    <div id="balance" class="float-lg-right">
-      Dostępne środki:<br />
-      <h2>{{currentAccount?.balance | number : '1.2-2'}} PLN</h2>
-      Dzienny limit transakcji: <br />
-      <h2>{{profile.limit - profile.currentLimit | number : '1.2-2'}} PLN</h2>
-      <button class="btn btn-background-slide" *ngIf="!showEditLimit" (click)="showLimitEdit(true)">Zmień limit</button>
-      <div *ngIf="showEditLimit">
-        <input [(ngModel)]="lim" placeholder="Limit" type="number">
-        <button class="btn btn-background-slide" (click)="changeLimit()">Zmień</button>
+      <div id="profile" [hidden]="isHidden">
+        <app-profile class="profile" appProfile [hidden]="isHidden">Brak</app-profile>
       </div>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <table class="table">
-      <tr>
-        <th>
-          <h4>Szukaj po tytule:</h4>
-        </th>
-        <th>
-          <h4>Szukaj po numerze konta:</h4>
-        </th>
-        <th>
-          <h4>Sortuj: </h4>
-        </th>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" placeholder="Tytuł" [(ngModel)]="title" (input)="search() " />
-        </td>
-        <td>
-          <input type="text" placeholder="Numer konta" [(ngModel)]="accNumber" (input)="search2() " />
-        </td>
-        <td>
-          <select class=" dropdown-toggle btn-lg" name="sort" [(ngModel)]="sort" (input)="onSort()">
-            <option *ngFor="let s of sortArr" [value]="s">
-              {{s}}
-            </option>
-          </select>
-        </td>
-      </tr>
-    </table>
-        
+
+      <br />
+      <button class="btn btn-background-slide" *ngIf="!kaczka" type="button" (click)="newTrans(true)">Nowa transakcja</button>
+      <br />
+      <p *ngIf="kaczka">
+        <app-transaction [kind]="kind"></app-transaction>
+      </p>
+
+      <br />
+      <br />
+      <br />
+      <div id="accounts" class="container">
+        <h1>
+          Konto
+        </h1>
+        <select class=" dropdown-toggle btn-lg" name="account" [(ngModel)]="currentId" (input)="check($event)">
+          <option *ngFor="let a of account" [value]="a.id">
+            {{a.accountNumber}}
+          </option>
+        </select>
+      </div>
+
+
+
+      <div id="balance" class="float-lg-right">
+        Dostępne środki:<br />
+        <h2>{{currentAccount?.balance | number : '1.2-2'}} PLN</h2>
+        Dzienny limit transakcji: <br />
+        <h2>{{profile.limit - profile.currentLimit | number : '1.2-2'}} PLN</h2>
+        <button class="btn btn-background-slide" *ngIf="!showEditLimit" (click)="showLimitEdit(true)">Zmień limit</button>
+        <div *ngIf="showEditLimit">
+          <input [(ngModel)]="lim" placeholder="Limit" type="number">
+          <button class="btn btn-background-slide" (click)="changeLimit()">Zmień</button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <table class="table">
+        <tr>
+          <th>
+            <h4>Szukaj po tytule:</h4>
+          </th>
+          <th>
+            <h4>Szukaj po numerze konta:</h4>
+          </th>
+          <th>
+            <h4>Sortuj: </h4>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" placeholder="Tytuł" [(ngModel)]="title" (input)="search() " />
+          </td>
+          <td>
+            <input type="text" placeholder="Numer konta" [(ngModel)]="accNumber" (input)="search2() " />
+          </td>
+          <td>
+            <select class=" dropdown-toggle btn-lg" name="sort" [(ngModel)]="sort" (input)="onSort()">
+              <option *ngFor="let s of sortArr" [value]="s">
+                {{s}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
       <br />
 
       <table class="table">
@@ -134,9 +137,9 @@
       <br />
 
 
-  </div>
-  <footer class="card-footer">
-    Projekt z PZ 2020 <br />
-    Dybowski Dominik
-  </footer>
-</body>
+    </div>
+    <footer class="card-footer">
+      Projekt z PZ 2020 <br />
+      Dybowski Dominik
+    </footer>
+  </body>
