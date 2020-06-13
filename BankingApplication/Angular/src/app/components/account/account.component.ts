@@ -28,6 +28,9 @@ export class AccountComponent implements OnInit {
   lim: number;
   showEditLimit: boolean = false;
   title: string;
+  sortArr = ['Data', 'Data malejąco', 'Rodzaj operacji', 'Rodzaj operacji malejąco', 'Tytuł', 'Tytuł malejąco', 'Kwota', 'Kwota malejąco'];
+  sort: string = 'Data malejąco';
+  accNumber: string;
 
   pageSize: number = 5;
   page: number = 1;
@@ -45,6 +48,7 @@ export class AccountComponent implements OnInit {
       this.currentAccount = this.account[0];
       this.service.getTransaction(this.currentAccount.id).subscribe(data => {
         this.transaction = data;
+        this.transaction.sort((b, a) => new Date(a.date).getTime() - new Date(b.date).getTime());
         this.maxPage = Math.ceil(this.transaction.length / this.pageSize);
         this.numbers = Array(this.maxPage).fill(1).map((x, i) => i);
       })
@@ -129,5 +133,45 @@ export class AccountComponent implements OnInit {
       this.ngOnInit();
     }
     
+  }
+  search2() {
+    if (this.accNumber != "") {
+      this.transaction = this.transaction.filter(res => {
+        return res.toAccountNumber.match(this.accNumber);
+      })
+      this.maxPage = Math.ceil(this.transaction.length / this.pageSize);
+      this.numbers = Array(this.maxPage).fill(1).map((x, i) => i);
+    } else if (this.accNumber == "") {
+      this.ngOnInit();
+    }
+
+  }
+  onSort() {
+    switch (this.sort) {
+      case 'Data':
+        this.transaction.sort((b, a) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        break;
+      case 'Data malejąco':
+        this.transaction.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        break;
+      case 'Rodzaj operacji':
+        this.transaction.sort((b, a) => a.operationKindId - b.operationKindId)
+        break;
+      case 'Rodzaj operacji malejąco':
+        this.transaction.sort((a, b) => a.operationKindId - b.operationKindId)
+        break;
+      case 'Tytuł':
+        this.transaction.sort((b, a) => a.title.localeCompare(b.title));
+        break;
+      case 'Tytuł malejąco':
+        this.transaction.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'Kwota':
+        this.transaction.sort((b, a) => a.amount - b.amount)
+        break;
+      case 'Kwota malejąco':
+        this.transaction.sort((a, b) => a.amount - b.amount)
+        break;
+    }
   }
 }

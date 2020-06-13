@@ -50,9 +50,22 @@
     <br />
     <br />
     <div>
-     <h4>Szukaj po tytule:</h4>
+      <h4>Szukaj po tytule:</h4>
       <input type="text" placeholder="Tytuł" [(ngModel)]="title" (input)="search() " />
+      <h4>Szukaj po numerze konta:</h4>
+      <input type="text" placeholder="Numer konta" [(ngModel)]="accNumber" (input)="search2() " />
     </div>
+    <div id="accounts" class="container">
+      <h4>
+       Sortuj:
+      </h4>
+      <select class=" dropdown-toggle btn-lg" name="sort" [(ngModel)]="sort" (input)="onSort()">
+        <option *ngFor="let s of sortArr" [value]="s">
+          {{s}}
+        </option>
+      </select>
+    </div>
+    <br />
 
     <table class="table">
       <thead class="thead">
